@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Travosca — single blog page
+   ========================================================================== */
+
+.page-hero--blog { background-image: url("../img/hero-blog.jpg"); }
+
+@media (max-width: 900px) {
+  .page-hero--blog { background-image: url("../img/hero-blog-sm.jpg"); }
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .6rem 1.5rem;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, .85);
+  font-size: .92rem;
+}
+
+.post-meta p { display: flex; align-items: center; gap: .45rem; }
+.post-meta .icon { color: var(--star); }
+
+/* ------------------------------------------------------------------ layout */
+.blog {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .blog { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------------ article */
+.blog__main { min-width: 0; }
+
+.blog__cover {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.blog__lead {
+  margin: 2rem 0 1.5rem;
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.5vw, 1.22rem);
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.blog__main h2 {
+  margin: 2.25rem 0 .85rem;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+}
+
+.blog__main p { margin-bottom: 1.15rem; color: var(--muted); }
+.blog__main figure { margin: 2rem 0; }
+.blog__main figure img { width: 100%; border-radius: var(--radius-lg); }
+
+.blog__main figcaption {
+  margin-top: .75rem;
+  color: var(--muted-2);
+  font-size: .9rem;
+  text-align: center;
+}
+
+.blog__pull {
+  margin: 2.25rem 0;
+  padding: 1.5rem 1.75rem;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink);
+  font-size: 1.08rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.blog__tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1.25rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.blog__tags-label { font-weight: 500; color: var(--ink); }
+.blog__share { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+
+.blog__share a,
+.blog__share button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink-soft);
+  transition: background-color .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+
+.blog__share a:hover,
+.blog__share button:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+@media (max-width: 560px) {
+  .blog__share { margin-left: 0; width: 100%; }
+}
+
+/* ------------------------------------------------------------------ aside */
+.blog__aside { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1.5rem; }
+
+@media (max-width: 960px) {
+  .blog__aside { position: static; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+}
+
+.widget {
+  padding: 1.5rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.widget__title { margin-bottom: 1.25rem; font-size: 1.15rem; }
+
+.widget__posts { display: grid; gap: 1rem; }
+
+.widget__post {
+  display: flex;
+  gap: .85rem;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.widget__post:last-child { padding-bottom: 0; border-bottom: 0; }
+
+.widget__post img {
+  width: 5.25rem;
+  height: 4rem;
+  object-fit: cover;
+  border-radius: 10px;
+  flex: none;
+}
+
+.widget__post > span { display: flex; flex-direction: column; gap: .2rem; min-width: 0; }
+.widget__post-title { color: var(--ink); font-size: .95rem; font-weight: 500; line-height: 1.4; }
+.widget__post:hover .widget__post-title { color: var(--accent); }
+.widget__post-date { color: var(--muted-2); font-size: .82rem; }
+
+.widget__categories { display: grid; gap: .6rem; }
+
+.widget__categories a {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--muted);
+  transition: color .25s var(--ease), gap .25s var(--ease);
+}
+
+.widget__categories a:hover { color: var(--ink); gap: .8rem; }
+.widget__categories .icon { color: var(--accent); }
+
+.widget--cta { background: #111114; border-color: #111114; color: rgba(255, 255, 255, .75); }
+.widget--cta .widget__title { color: #fff; }
+.widget--cta p { margin-bottom: .75rem; font-size: .93rem; }
+
+.widget__contact {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.widget__contact .icon { color: var(--star); }
+
+/* --------------------------------------------------------------- comments */
+.comments { max-width: 46rem; margin-inline: auto; }
+.comments__head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.comments__title { font-size: clamp(1.5rem, 3vw, 2rem); }
+.comments__count { color: var(--muted); }
+.comments__note { margin: .5rem 0 1.75rem; color: var(--muted); font-size: .9rem; }
+
+.comment-form {
+  padding: clamp(1.25rem, 3vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.comment-list { display: grid; gap: 1.25rem; margin-top: 2.5rem; }
+
+.comment {
+  display: flex;
+  gap: 1rem;
+  padding: 1.35rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.comment__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.85rem;
+  height: 2.85rem;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 600;
+  flex: none;
+}
+
+.comment__avatar img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+.comment__head { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
+.comment__name { color: var(--ink); font-weight: 600; }
+.comment__date { color: var(--muted-2); font-size: .85rem; }
+.comment__text { margin-top: .4rem; color: var(--muted); }
+
+.comment.is-new { animation: comment-in .5s var(--ease); }
+
+@keyframes comment-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: none; }
+}

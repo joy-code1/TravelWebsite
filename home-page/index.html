@@ -1,302 +1,388 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travosca — Make your journey with handpicked small-group trips</title>
+<meta name="description" content="Travosca plans small-group trips to Bali, Paris, the Swiss Alps, Thailand, Taiwan, Lombok and Singapore. Handpicked hotels, local guides and a price guarantee.">
+<meta name="theme-color" content="#111114">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/home.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
-    <div class="arrow-up">
-        <a href="#"><i class="fa-solid fa-arrow-up"></i></a>
+<body data-page="home">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="./index.html" aria-label="Travosca — home">
+      <img class="brand__logo brand__logo--light" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+      <img class="brand__logo brand__logo--dark" src="../assets/img/logo-dark.png" alt="" aria-hidden="true" width="560" height="71">
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" data-nav="home" href="./index.html">Home</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="about" href="../about_us-page/index.html">About us</a></li>
+        <li class="nav__item">
+          <button class="nav__link" type="button" data-dropdown-toggle aria-expanded="false" aria-controls="nav-packages">
+            Packages
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+          </button>
+          <ul class="nav__submenu" id="nav-packages">
+            <li><a href="../package-page/index.html">All packages <small>7 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Asia">Asia <small>5 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Europe">Europe <small>2 trips</small></a></li>
+            <li><a href="../package-page/index.html?sort=price">Cheapest first <small>from $219</small></a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a class="nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="contact" href="../contact-page/index.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" type="button" data-search-open aria-label="Search destinations">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      </button>
+      <a class="btn btn--light btn--sm header__cta" href="../contact-page/index.html">Plan my trip</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-menu"></use></svg>
+      </button>
     </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__top">
+    <a class="brand" href="./index.html" aria-label="Travosca — home">
+      <img class="brand__logo" src="../assets/img/logo-dark.png" alt="Travosca" width="560" height="71">
+    </a>
+    <button class="mobile-nav__close" type="button" data-menu-close aria-label="Close menu">
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-close"></use></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav__list">
+    <li><a class="mobile-nav__link" data-nav="home" href="./index.html">Home
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="about" href="../about_us-page/index.html">About us
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li>
+      <button class="mobile-nav__link" type="button" data-submenu-toggle aria-expanded="false" aria-controls="mobile-packages">Packages
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+      </button>
+      <div class="mobile-nav__sub" id="mobile-packages">
+        <a href="../package-page/index.html">All packages <small>7</small></a>
+        <a href="../package-page/index.html?region=Asia">Asia <small>5</small></a>
+        <a href="../package-page/index.html?region=Europe">Europe <small>2</small></a>
+      </div>
+    </li>
+    <li><a class="mobile-nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="contact" href="../contact-page/index.html">Contact
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+  </ul>
+  <div class="mobile-nav__footer">
+    <div class="mobile-nav__socials">
+      <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+      <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+      <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+      <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
+    </div>
+    <a class="btn btn--primary btn--block" href="../contact-page/index.html">Plan my trip</a>
+  </div>
+</nav>
+
+<div class="scrim"></div>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search destinations">
+  <div class="search-overlay__inner">
+    <div class="search-box" data-search-form>
+      <svg class="icon icon--lg" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      <input class="search-box__input" type="search" placeholder="Try “Bali”, “Paris” or “Alps”" aria-label="Search destinations" autocomplete="off">
+      <button class="btn btn--primary btn--sm" type="button" data-search-close>Close</button>
+    </div>
+    <div class="search-results"></div>
+    <p class="search-overlay__hint">Press <kbd>Esc</kbd> to close · <kbd>Enter</kbd> opens the first result</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ============================ hero ============================ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <p class="hero__eyebrow" data-reveal>Explore the world</p>
+      <h1 class="hero__title" data-reveal style="--reveal-delay:80ms">
+        Make your<br><em>journey</em> effortless.
+      </h1>
+      <p class="hero__lead" data-reveal style="--reveal-delay:160ms">
+        Small groups, handpicked hotels and local guides who know the road.
+        Pick a place — we take care of the rest.
+      </p>
+
+      <form class="trip-search" data-trip-search novalidate data-reveal style="--reveal-delay:240ms">
+        <div class="trip-search__field">
+          <svg class="icon trip-search__icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-map-pin"></use></svg>
+          <label class="sr-only" for="ts-location">Destination</label>
+          <select class="trip-search__control" id="ts-location" name="dest">
+            <option value="">Where to?</option>
+            <option value="bali">Bali, Indonesia</option>
+            <option value="paris">Paris, France</option>
+            <option value="swiss">Swiss Alps</option>
+            <option value="thailand">Thailand</option>
+            <option value="taiwan">Taiwan</option>
+            <option value="lombok">Lombok, Indonesia</option>
+            <option value="singapore">Singapore</option>
+          </select>
+        </div>
+        <div class="trip-search__field">
+          <svg class="icon trip-search__icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-calendar"></use></svg>
+          <label class="sr-only" for="ts-month">When</label>
+          <select class="trip-search__control" id="ts-month" name="month">
+            <option value="">Any month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+        </div>
+        <div class="trip-search__field">
+          <svg class="icon trip-search__icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-users"></use></svg>
+          <label class="sr-only" for="ts-people">Travellers</label>
+          <select class="trip-search__control" id="ts-people" name="people">
+            <option value="1">1 traveller</option>
+            <option value="2" selected>2 travellers</option>
+            <option value="3">3 travellers</option>
+            <option value="4">4 travellers</option>
+            <option value="5">5 travellers</option>
+            <option value="6">6+ travellers</option>
+          </select>
+        </div>
+        <button class="btn btn--primary trip-search__submit" type="submit">Explore now</button>
+      </form>
+
+      <div class="hero__popular" data-reveal style="--reveal-delay:320ms">
+        <span class="hero__popular-label">Popular places:</span>
+        <div class="chip-group" data-popular>
+          <button class="chip" type="button" data-dest="bali">Bali</button>
+          <button class="chip" type="button" data-dest="paris">Paris</button>
+          <button class="chip" type="button" data-dest="swiss">Swiss Alps</button>
+          <button class="chip" type="button" data-dest="thailand">Thailand</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <noscript>
     <div class="container">
-        <div class="block-1">
-            <div class="navbar">
-                <div class="left-side">
-                    <img src="./imges/logo1 1.svg" alt="" class="logo-img">
-                    <a href="#" class="text-home">Home</a>
-                </div>
-                <div class="right-side">
-                    <select name="cars" id="cars" class="packages">
-                        <option value="volvo">Packages</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Destination</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Blog</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <a href="../contact-page/index.html" class="contact-text">Contact</a>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </div>
-            <div class="content">
-                <p class="text-journey">Make in <br> your journey.</p>
-                <p class="description-journey">
-                    Explore the world with what you love beautiful natural beauty.
-                </p>
-                <div class="explore-block">
-                    <select name="country" id="country" class="location" required>
-                        <option selected=''>Location</option>
-                        <option value="saab">Paris</option>
-                        <option value="mercedes">Mosccow</option>
-                        <option value="audi">Tashkent</option>
-                    </select>
-                    <select name="date" id="date" class="location" required>
-                        <option selected=''>Date</option>
-                        <option value="saab">Tomorrow</option>
-                        <option value="mercedes">Yesterday</option>
-                        <option value="audi">Next Month</option>
-                    </select>
-                    <select name="people" id="people" class="location" required>
-                        <option selected=''>People</option>
-                        <option value="saab">1</option>
-                        <option value="mercedes">2</option>
-                        <option value="audi">3</option>
-                    </select>
-                    <div class="explore-button">
-                        <button>Explore now</button>
-                    </div>
-                </div>
-                <p class="popular-place">
-                    <span>Popular Place :</span> Bali, Istanbul, Rome, Paris.
-                </p>
-            </div>
-        </div>
-        <div class="block-2">
-            <div class="wrapper">
-                <h1 class="new-world-text">
-                    Explore new worlds with <br>
-exotic natural scenery
-                </h1>
-                <p class="description-world">
-                    Explore the world with what you love beautiful natural beauty.
-                </p>
-                <div class="left-right-buttons">
-                    <button><i class="fa-solid fa-arrow-left"></i></button>
-                <button><i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div class="img-scroll">
-                    <img src="./imges/Rectangle 18.svg" alt="" class="rec-18">
-                    <div class="active-card">
-                        <img src="./imges/unsplash_sELcHR_bGVs (1).svg" alt="" class="unplash">
-                        <div class="text-card">
-                            <div class="wrapper-2">
-                                <p class="counrty-card">Bali, Indonesia.</p>
-                            <p class="counrty-description">Bali is a beautiful tourist spot and is visited by many <br>travelers. </p>
-                            <div class="circle-card"><p>"</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <img src="./imges/Rectangle 18.svg" alt="" class="rec-18">
-                </div>
-            </div>
-        </div>
-        <div class="block-3">
-            <div class="back-img">
-                <h1 class="why-text">
-                    Why choose Us?
-                </h1>
-                <p class="description-why">
-                    our services have been trusted by  world travelers.
-                </p>
-                <div class="buttons-left-right">
-                    <button><i class="fa-solid fa-arrow-left"></i></button>
-                    <button><i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div class="cards-flex">
-                    <div class="first-card">
-                    <img src="./imges/Group 31.svg" alt="">
-                    <p class="best">Best Service</p>
-                    <p class="service-description">our service is reliable and convenient, our service is quality.</p>
-                    <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="first-card">
-                    <img src="./imges/Group 31 (1).svg" alt="">
-                    <p class="best">Price Guarantee</p>
-                    <p class="service-description">our service is reliable and convenient, our service is quality.</p>
-                    <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                <div class="first-card">
-                    <img src="./imges/Group 31 (2).svg" alt="">
-                    <p class="best">Handpicked Hotels</p>
-                    <p class="service-description">our service is reliable and convenient, our service is quality.</p>
-                    <a href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                </div>
-            </div>
-        </div>
-        <div class="block-4">
-            <div class="wrapper-tour">
-                <h1 class="tour">
-                Our tour partner
-            </h1>
-            <p class="description-tour">
-                There are many variation of passage of lorem ipsum available but <br>the majority have suffered alteration 
-            </p>
-            <div class="img-company">
-                <img src="./imges/Katana.svg" alt="">
-                <img src="./imges/travava.svg" alt="">
-                <img src="./imges/bigui.svg" alt="">
-                <img src="./imges/Booking.com.svg" alt="">
-                <img src="./imges/Jakmaen.svg" alt="">
-            </div>
-            </div>
-        </div>
-        <div class="block-5">
-            <p class="text-test">
-                testimonial
-            </p>
-            <p class="client">
-                What our clien say
-            </p>
-            <p class="description-identity">
-                Create  a visual identity for your company and a <br>overall brand
-            </p>
-            <div class="button-left-right">
-                    <button><i class="fa-solid fa-arrow-left"></i></button>
-                    <button><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-            <div class="scroll-cards-second">
-                <div class="first-identity">
-                    <img src="./imges/Mask Group (1).svg" alt="">
-                    <div class="info-person">
-                        <p class="name-tetx">Sara Jay</p>
-                        <p class="job">Treveller</p>
-                    </div>
-                    <div class="rating">
-                        <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        </p>
-                        <p class="before-text">
-                            Before we define any approach,<br> we need to deline the brands <br> overall goal. We  then need to <br>dive.
-                        </p>
-                    </div>
-                </div>
-                <div class="first-identity">
-                    <img src="./imges/Mask Group (2).svg" alt="">
-                    <div class="info-person">
-                        <p class="name-tetx">Cristian Daniel</p>
-                        <p class="job">Treveller</p>
-                    </div>
-                    <div class="rating">
-                        <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        </p>
-                        <p class="before-text">
-                            Before we define any approach,<br> we need to deline the brands <br> overall goal. We  then need to <br>dive.
-                        </p>
-                    </div>
-                </div>
-                <div class="first-identity">
-                    <img src="./imges/Mask Group (3).svg" alt="">
-                    <div class="info-person">
-                        <p class="name-tetx">Kausar Hasan</p>
-                        <p class="job">Treveller</p>
-                    </div>
-                    <div class="rating">
-                        <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        </p>
-                        <p class="before-text">
-                            Before we define any approach,<br> we need to deline the brands <br> overall goal. We  then need to <br>dive.
-                        </p>
-                    </div>
-                </div>
-                <div class="first-identity">
-                    <img src="./imges/Mask Group (3).svg" alt="">
-                    <div class="info-person">
-                        <p class="name-tetx">Kausar Hasan</p>
-                        <p class="job">Treveller</p>
-                    </div>
-                    <div class="rating">
-                        <p>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        <i class="fa-solid fa-star"></i>
-                        </p>
-                        <p class="before-text">
-                            Before we define any approach,<br> we need to deline the brands <br> overall goal. We  then need to <br>dive.
-                        </p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <div class="block-6">
-            <div class="text-vers">
-                <p class="sub">
-                Subcribe to get special price
-            </p>
-            <p class="sub-desc">
-                Dont wanna miss something? subscribe right now and get special <br> promotion and monthly newsletter
-            </p>
-            </div>
-            <div class="input-email">
-                <input type="email" name="send" id="send" placeholder="Type your email here..." class="input">
-                <button type="submit">Subscribe</button>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="left-side-footer">
-                <img src="./imges/logo 2.svg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, suscipit?</p>
-            </div>
-            <div class="center-side-footer">
-                <p class="contact-info">Contact Information</p>
-                <div class="information-location">
-                    <p class="loc"><i class="fa-solid fa-location-dot"></i><span> 732 Despard St, Atlanta</span></p>
-                    <p class="em"><i class="fa-solid fa-envelope"></i><span> +97 888 8888</span></p>
-                    <p class="tel"><i class="fa-solid fa-phone"></i><span> info@traveller.com</span></p>
-                </div>
-            </div>
-            <div class="right-side-footer">
-                <p class="link">Quick Link</p>
-                <div class="navbar-footer">
-                    <a href="#">Home</a>
-                    <a href="../about_us-page/index.html">About Us</a>
-                    <a href="../package-page/index.html">Tours</a>
-                    <a href="../contact-page/index.html">Contact</a>
-                </div>
-            </div>
-            <div class="end-footer">
-                <p class="follow">
-                    Follow Us
-                </p>
-                <div class="logs">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-youtube"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                    
-                </div>
-            </div>
-        </div>
+      <p class="noscript-note">JavaScript is switched off, so the live trip list cannot load.
+      Every package is still bookable — <a href="../contact-page/index.html">ask a planner</a> and we will send the current catalogue.</p>
     </div>
+  </noscript>
+
+  <!-- ======================== destinations ======================== -->
+  <section class="section" id="destinations">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Popular right now</p>
+        <h2 class="title">Explore new worlds with exotic natural scenery</h2>
+        <p class="lead">Seven trips our travellers keep coming back to — beaches, mountains and cities that stay with you.</p>
+      </div>
+
+      <div class="carousel carousel--trips" data-carousel data-autoplay="7000" data-reveal>
+        <div class="carousel__head">
+          <p class="carousel__count"><span data-dest-total>7</span> trips · updated weekly</p>
+          <div class="carousel__controls">
+            <button class="carousel__nav" type="button" data-carousel-prev aria-label="Previous trips">
+              <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-left"></use></svg>
+            </button>
+            <button class="carousel__nav" type="button" data-carousel-next aria-label="Next trips">
+              <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-right"></use></svg>
+            </button>
+          </div>
+        </div>
+        <div class="carousel__viewport" data-carousel-track data-dest-track tabindex="0" role="group" aria-label="Popular trips">
+          <!-- cards are rendered by assets/js/home.js -->
+        </div>
+        <div class="carousel__dots" data-carousel-dots></div>
+      </div>
+
+      <p class="text-center mt-3">
+        <a class="btn btn--outline" href="../package-page/index.html">
+          See all packages
+          <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-right"></use></svg>
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================= why choose us ======================= -->
+  <section class="section why">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Why choose us?</p>
+        <h2 class="title">Our services have been trusted by world travellers</h2>
+        <p class="lead">No call centres, no surprises — just a small team that plans trips the way it would plan its own.</p>
+      </div>
+      <div class="why__grid" data-why-grid>
+        <!-- feature cards are rendered by assets/js/home.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== partners ========================== -->
+  <section class="section section--tight partners">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Trusted by</p>
+        <h2 class="title">Our tour partner</h2>
+        <p class="lead">We book through partners we have worked with for years, so your payment and your plans stay protected.</p>
+      </div>
+      <div class="partners__grid" data-partners>
+        <!-- partner logos are rendered by assets/js/home.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= testimonials ======================== -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Testimonial</p>
+        <h2 class="title">What our client say</h2>
+        <p class="lead">Real words from travellers who came home already planning the next one.</p>
+      </div>
+
+      <div class="carousel carousel--quotes" data-carousel data-autoplay="9000" data-reveal>
+        <div class="carousel__viewport" data-carousel-track data-testimonial-track tabindex="0" role="group" aria-label="Client testimonials">
+          <!-- testimonials are rendered by assets/js/home.js -->
+        </div>
+        <div class="carousel__controls carousel__controls--center">
+          <button class="carousel__nav" type="button" data-carousel-prev aria-label="Previous testimonial">
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-left"></use></svg>
+          </button>
+          <button class="carousel__nav" type="button" data-carousel-next aria-label="Next testimonial">
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-right"></use></svg>
+          </button>
+        </div>
+        <div class="carousel__dots" data-carousel-dots></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= cta ============================= -->
+  <section class="cta-band">
+    <div class="container cta-band__inner" data-reveal>
+      <div>
+        <p class="eyebrow">Ready when you are</p>
+        <h2 class="cta-band__title">Tell us the mood. We will find the place.</h2>
+        <p class="cta-band__text">Six questions, one short call and a draft itinerary in your inbox within 48 hours.</p>
+      </div>
+      <div class="cta-band__actions">
+        <a class="btn btn--light btn--lg" href="../contact-page/index.html">Start planning</a>
+        <a class="btn btn--outline-light btn--lg" href="../package-page/index.html">Browse packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== newsletter ========================= -->
+  <section class="newsletter">
+    <div class="container">
+      <h2 class="newsletter__title">Subscribe to get special price</h2>
+      <p class="newsletter__text">Don't want to miss something? Subscribe right now and get special promotion and monthly newsletter.</p>
+      <form class="newsletter__form" data-newsletter>
+        <label class="sr-only" for="newsletter-email">Your email address</label>
+        <input class="input" id="newsletter-email" type="email" name="email" placeholder="Type your email here..." autocomplete="email" required>
+        <button class="btn btn--accent" type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter__note" data-newsletter-note role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img class="footer__logo" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+        <p class="footer__about">Small-group trips, handpicked stays and guides who actually live where they lead. Travosca has been planning journeys since 2016.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+          <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__title">Quick links</p>
+        <ul class="footer__list">
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="../about_us-page/index.html">About us</a></li>
+          <li><a href="../package-page/index.html">Packages</a></li>
+          <li><a href="../single_blog-page/index.html">Blog</a></li>
+          <li><a href="../contact-page/index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Popular trips</p>
+        <ul class="footer__list">
+          <li><a href="../package-page/index.html?dest=bali">Bali, Indonesia</a></li>
+          <li><a href="../package-page/index.html?dest=paris">Paris, France</a></li>
+          <li><a href="../package-page/index.html?dest=swiss">Swiss Alps</a></li>
+          <li><a href="../package-page/index.html?dest=thailand">Thailand</a></li>
+          <li><a href="../package-page/index.html?dest=singapore">Singapore</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Contact information</p>
+        <ul class="footer__list footer__contact">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-map-pin"></use></svg>
+            <span>732 Despard St, Atlanta, GA</span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-phone"></use></svg>
+            <a href="tel:+978888888">+97&nbsp;888&nbsp;8888</a>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-mail"></use></svg>
+            <a href="mailto:info@traveller.com">info@traveller.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Travosca. All rights reserved.</p>
+      <nav aria-label="Legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Cookie settings</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" data-to-top aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-up"></use></svg>
+</button>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ui.js" defer></script>
+<script src="../assets/js/home.js" defer></script>
 </body>
 </html>

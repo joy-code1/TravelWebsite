@@ -1,241 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single-Blog Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Stories For Now and the Future — Travosca</title>
+<meta name="description" content="What the last few years changed about the way we travel, and the trips worth waiting for.">
+<meta name="theme-color" content="#111114">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/blog.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
-    <div class="block-1">
-            <div class="navbar">
-                <div class="left-side">
-                    <img src="./img/logo1 1.svg" alt="" class="logo-img">
-                    <a href="../home-page/index.html" class="text-home">Home</a>
-                </div>
-                <div class="right-side">
-                    <a href="./index.html" class="link-about">About Us</a>
-                    <select name="cars" id="cars" class="packages">
-                        <option value="volvo">Packages</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Destination</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Blog</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <a href="../contact-page/index.html" class="contact-text">Contact</a>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-            </div>
-            <div class="text-center">
-                <h1>Travel Stories For Now <br> and the Future</h1>
-                <div class="icons-text">
-                    <div class="first-icon">
-                        <p><i class="fa-solid fa-user"></i>Hasmar</p>
-                    </div>
-                    <div class="second-icon">
-                        
-                        <p><i class="fa-solid fa-calendar-days"></i>January 18, 2021</p>
-                    </div>
-                    <div class="third-icon">
-                        
-                        <p><i class="fa-solid fa-folder-open"></i>Stories, Tips </p>
-                    </div>
-                </div>
-            </div>
+<body data-page="blog">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="../home-page/index.html" aria-label="Travosca — home">
+      <img class="brand__logo brand__logo--light" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+      <img class="brand__logo brand__logo--dark" src="../assets/img/logo-dark.png" alt="" aria-hidden="true" width="560" height="71">
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" data-nav="home" href="../home-page/index.html">Home</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="about" href="../about_us-page/index.html">About us</a></li>
+        <li class="nav__item">
+          <button class="nav__link" type="button" data-dropdown-toggle aria-expanded="false" aria-controls="nav-packages">
+            Packages
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+          </button>
+          <ul class="nav__submenu" id="nav-packages">
+            <li><a href="../package-page/index.html">All packages <small>7 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Asia">Asia <small>5 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Europe">Europe <small>2 trips</small></a></li>
+            <li><a href="../package-page/index.html?sort=price">Cheapest first <small>from $219</small></a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a class="nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="contact" href="../contact-page/index.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" type="button" data-search-open aria-label="Search destinations">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      </button>
+      <a class="btn btn--light btn--sm header__cta" href="../contact-page/index.html">Plan my trip</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__top">
+    <a class="brand" href="../home-page/index.html" aria-label="Travosca — home">
+      <img class="brand__logo" src="../assets/img/logo-dark.png" alt="Travosca" width="560" height="71">
+    </a>
+    <button class="mobile-nav__close" type="button" data-menu-close aria-label="Close menu">
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-close"></use></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav__list">
+    <li><a class="mobile-nav__link" data-nav="home" href="../home-page/index.html">Home
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="about" href="../about_us-page/index.html">About us
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li>
+      <button class="mobile-nav__link" type="button" data-submenu-toggle aria-expanded="false" aria-controls="mobile-packages">Packages
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+      </button>
+      <div class="mobile-nav__sub" id="mobile-packages">
+        <a href="../package-page/index.html">All packages <small>7</small></a>
+        <a href="../package-page/index.html?region=Asia">Asia <small>5</small></a>
+        <a href="../package-page/index.html?region=Europe">Europe <small>2</small></a>
+      </div>
+    </li>
+    <li><a class="mobile-nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="contact" href="../contact-page/index.html">Contact
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+  </ul>
+  <div class="mobile-nav__footer">
+    <div class="mobile-nav__socials">
+      <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+      <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+      <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+      <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
+    </div>
+    <a class="btn btn--primary btn--block" href="../contact-page/index.html">Plan my trip</a>
+  </div>
+</nav>
+
+<div class="scrim"></div>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search destinations">
+  <div class="search-overlay__inner">
+    <div class="search-box" data-search-form>
+      <svg class="icon icon--lg" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      <input class="search-box__input" type="search" placeholder="Try “Bali”, “Paris” or “Alps”" aria-label="Search destinations" autocomplete="off">
+      <button class="btn btn--primary btn--sm" type="button" data-search-close>Close</button>
+    </div>
+    <div class="search-results"></div>
+    <p class="search-overlay__hint">Press <kbd>Esc</kbd> to close · <kbd>Enter</kbd> opens the first result</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero page-hero--blog">
+    <div class="container page-hero__inner">
+      <div class="post-meta post-meta--hero" data-post-meta></div>
+      <h1 class="page-hero__title" data-post-title>Travel Stories For Now and the Future</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container blog">
+      <article class="blog__main" data-blog-body></article>
+
+      <aside class="blog__aside">
+        <div class="widget">
+          <h2 class="widget__title">Recent post</h2>
+          <div class="widget__posts" data-recent-posts></div>
         </div>
-        <div class="block-2">
-            <div class="wrapper-stories">
-                <div class="left-side1">
-                    <div class="first-text-img">
-                        <img src="./img/unsplash_1XLyzi17Z2M (1).svg" alt="" class="first-img">
-                    <p class="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    </p>
-                    </div>
-                    <div class="second-text-img">
-                        <p class="rice-text">
-                            Rice Terraces, Tegallalang
-                        </p>
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                        </p>
-                        <img src="./img/unsplash_XbPG4k-KUwE.svg" alt="" class="second-img">
-                        <p class="description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        </p>
-                    </div>
-                    <div class="tags">
-                        <div class="left-side2">
-                            <p><span>Tags: </span> Destination, Travel</p>
-                        </div>
-                        <div class="right-side1">
-                            <p>Share this: </p> 
-                            <i class="fa-brands fa-twitter"></i>
-                            <i class="fa-brands fa-youtube"></i>
-                            <i class="fa-brands fa-facebook"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="right-side2">
-                    <div class="post">
-                        <p class="text-post">Recent Post</p>
-                        <div class="first-post">
-                            <img src="./img/unsplash_1XLyzi17Z2M (2).svg" alt="">
-                            <div class="text-data">
-                                <p class="travel-text">
-                                Travel Stories for Now and the <br> Future
-                            </p>
-                            <p class="data">
-                                14 Dec 2022
-                            </p>
-                            </div>
-                        </div>
-                        <div class="first-post">
-                            <img src="./img/unsplash_1XLyzi17Z2M (2).svg" alt="">
-                            <div class="text-data">
-                                <p class="travel-text">
-                                Travel Stories for Now and the <br> Future
-                            </p>
-                            <p class="data">
-                                14 Dec 2022
-                            </p>
-                            </div>
-                        </div>
-                        <div class="first-post">
-                            <img src="./img/unsplash_1XLyzi17Z2M (2).svg" alt="">
-                            <div class="text-data">
-                                <p class="travel-text">
-                                Travel Stories for Now and the <br> Future
-                            </p>
-                            <p class="data">
-                                14 Dec 2022
-                            </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="post2">
-                        <p class="categories">Categories</p>
-                        <p class="choose"><i class="fa-solid fa-arrow-right"></i>Travel</p>
-                        <p class="choose"><i class="fa-solid fa-arrow-right"></i>Tips</p>
-                        <p class="choose"><i class="fa-solid fa-arrow-right"></i>Stories</p>
-                        <p class="choose"><i class="fa-solid fa-arrow-right"></i>Destination</p>
-                    </div>
-                    <div class="questions">
-                        <p class="any">
-                            Have Any Questions?
-                        </p>
-                        <p class="desc">
-                            Do not hesitage to give us a call. We are an expert team and we are happy to talk to you.
-                        </p>
-                        <p class="phone">
-                            <i class="fa-solid fa-phone"></i> +789679568
-                        </p>
-                        <p class="email">
-                            <i class="fa-solid fa-envelope"></i> contact.me@mail.com
-                        </p>
-                    </div>
-                </div>
-            </div>
+
+        <div class="widget">
+          <h2 class="widget__title">Categories</h2>
+          <ul class="widget__categories">
+            <li><a href="../package-page/index.html"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg>Travel</a></li>
+            <li><a href="../package-page/index.html?region=Asia"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg>Tips</a></li>
+            <li><a href="../package-page/index.html?region=Europe"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg>Stories</a></li>
+            <li><a href="../package-page/index.html?sort=rating"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg>Destination</a></li>
+          </ul>
         </div>
-        <div class="leave">
-                        <p class="leave-text">
-                            Leave a Reply
-                        </p>
-                        <p class="desc-reply">
-                            Your email address will not be published. Required fields are marked *
-                        </p>
-                        <p class="com">
-                            Comment*
-                        </p>
-                        <div class="email">
-                            <textarea name="" id="" cols="60" rows="10"></textarea>
-                        </div>
-                        <p class="name">
-                            Name*
-                        </p>
-                        <div class="name">
-                            <input type="text" name="" id="">
-                        </div>
-                        <p class="email1">
-                            Email*
-                        </p>
-                       <div class="email2">
-                         <input type="email" name="" id="">
-                       </div>
-                        <p class="web">
-                            Website
-                        </p>
-                        <div class="text2">
-                            <input type="text" name="" id="">
-                        </div>
-                        <div class="checkbox">
-                            <input type="checkbox" name="" id="" class="checkbox2">
-                            <span>Save my name, email, and website in this browser for the next time I comment.</span>
-                        </div>
-                        
-                        <div class="button3">
-                            <button type="submit" class="post5">Post Comment</button>
-                        </div>
-                    </div>
-                    <div class="block-6">
-            <div class="text-vers">
-                <p class="sub">
-                Subcribe to get special price
-            </p>
-            <p class="sub-desc">
-                Dont wanna miss something? subscribe right now and get special <br> promotion and monthly newsletter
-            </p>
-            </div>
-            <div class="input-email">
-                <input type="email" name="send" id="send" placeholder="Type your email here...">
-                <button type="submit">Subscribe</button>
-            </div>
+
+        <div class="widget widget--cta">
+          <h2 class="widget__title">Have any questions?</h2>
+          <p>Do not hesitate to give us a call. We are an expert team and we are happy to talk to you.</p>
+          <p class="widget__contact"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-phone"></use></svg> +97 888 8888</p>
+          <p class="widget__contact"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-mail"></use></svg> info@traveller.com</p>
+          <a class="btn btn--primary btn--block mt-1" href="../contact-page/index.html">Ask a planner</a>
         </div>
-        <div class="footer">
-            <div class="left-side-footer">
-                <img src="./img/logo 2.svg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, suscipit?</p>
-            </div>
-            <div class="center-side-footer">
-                <p class="contact-info">Contact Information</p>
-                <div class="information-location">
-                    <p class="loc"><i class="fa-solid fa-location-dot"></i><span> 732 Despard St, Atlanta</span></p>
-                    <p class="em"><i class="fa-solid fa-envelope"></i><span> +97 888 8888</span></p>
-                    <p class="tel"><i class="fa-solid fa-phone"></i><span> info@traveller.com</span></p>
-                </div>
-            </div>
-            <div class="right-side-footer">
-                <p class="link">Quick Link</p>
-                <div class="navbar-footer">
-                    <a href="../home-page/index.html">Home</a>
-                    <a href="../about_us-page/index.html">About Us</a>
-                    <a href="../package-page/index.html">Tours</a>
-                    <a href="../contact-page/index.html">Contact</a>
-                </div>
-            </div>
-            <div class="end-footer">
-                <p class="follow">
-                    Follow Us
-                </p>
-                <div class="logs">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-youtube"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
-            </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--soft section--tight">
+    <div class="container">
+      <div class="comments" data-comments>
+        <div class="comments__head">
+          <h2 class="comments__title">Leave a reply</h2>
+          <p class="comments__count"><span data-comment-count>2</span> comments</p>
         </div>
+        <p class="comments__note">Your email address will not be published. Required fields are marked *</p>
+
+        <form class="comment-form" data-comment-form novalidate>
+          <div class="field">
+            <label class="field__label" for="cm-comment">Comment <span class="req">*</span></label>
+            <textarea class="textarea" id="cm-comment" name="comment" required minlength="10"></textarea>
+            <p class="field__error" data-error-for="cm-comment"></p>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field__label" for="cm-name">Name <span class="req">*</span></label>
+              <input class="input" id="cm-name" name="name" type="text" autocomplete="name" required>
+              <p class="field__error" data-error-for="cm-name"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cm-email">Email <span class="req">*</span></label>
+              <input class="input" id="cm-email" name="email" type="email" autocomplete="email" required>
+              <p class="field__error" data-error-for="cm-email"></p>
+            </div>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" name="remember">
+            <span>Save my name, email, and website in this browser for the next time I comment.</span>
+          </label>
+          <button class="btn btn--primary btn--lg" type="submit">Post comment</button>
+        </form>
+
+        <ul class="comment-list" data-comment-list></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <h2 class="newsletter__title">Subscribe to get special price</h2>
+      <p class="newsletter__text">Don't want to miss something? Subscribe right now and get special promotion and monthly newsletter.</p>
+      <form class="newsletter__form" data-newsletter>
+        <label class="sr-only" for="newsletter-email">Your email address</label>
+        <input class="input" id="newsletter-email" type="email" name="email" placeholder="Type your email here..." autocomplete="email" required>
+        <button class="btn btn--accent" type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter__note" data-newsletter-note role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img class="footer__logo" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+        <p class="footer__about">Small-group trips, handpicked stays and guides who actually live where they lead. Travosca has been planning journeys since 2016.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+          <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="footer__title">Quick links</p>
+        <ul class="footer__list">
+          <li><a href="../home-page/index.html">Home</a></li>
+          <li><a href="../about_us-page/index.html">About us</a></li>
+          <li><a href="../package-page/index.html">Packages</a></li>
+          <li><a href="../single_blog-page/index.html">Blog</a></li>
+          <li><a href="../contact-page/index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Popular trips</p>
+        <ul class="footer__list">
+          <li><a href="../package-page/index.html?dest=bali">Bali, Indonesia</a></li>
+          <li><a href="../package-page/index.html?dest=paris">Paris, France</a></li>
+          <li><a href="../package-page/index.html?dest=swiss">Swiss Alps</a></li>
+          <li><a href="../package-page/index.html?dest=thailand">Thailand</a></li>
+          <li><a href="../package-page/index.html?dest=singapore">Singapore</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Contact information</p>
+        <ul class="footer__list footer__contact">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-map-pin"></use></svg>
+            <span>732 Despard St, Atlanta, GA</span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-phone"></use></svg>
+            <a href="tel:+978888888">+97&nbsp;888&nbsp;8888</a>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-mail"></use></svg>
+            <a href="mailto:info@traveller.com">info@traveller.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Travosca. All rights reserved.</p>
+      <nav aria-label="Legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Cookie settings</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" data-to-top aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-up"></use></svg>
+</button>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ui.js" defer></script>
+<script src="../assets/js/blog.js" defer></script>
 </body>
 </html>

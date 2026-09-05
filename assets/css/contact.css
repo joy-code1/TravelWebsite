@@ -1,0 +1,134 @@
+/* ==========================================================================
+   Travosca — contact page
+   ========================================================================== */
+
+.page-hero--contact { background-image: url("../img/hero-contact.jpg"); }
+
+@media (max-width: 900px) {
+  .page-hero--contact { background-image: url("../img/hero-contact-sm.jpg"); }
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(1.75rem, 4vw, 4rem);
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .contact { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------------- form */
+.contact__form-wrap {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact__title { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+.contact__lead { margin: .75rem 0 1.75rem; color: var(--muted); }
+.contact__form .btn { margin-top: .5rem; }
+
+.contact__note {
+  min-height: 1.5rem;
+  margin-top: 1rem;
+  font-size: .92rem;
+  font-weight: 500;
+  color: #2f8f5b;
+}
+
+/* ------------------------------------------------------------------ aside */
+.contact__aside { position: sticky; top: calc(var(--header-h) + 1.5rem); }
+.contact__aside-title { margin-bottom: 1.25rem; font-size: 1.25rem; }
+
+.office-grid {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.office-card {
+  padding: 1.35rem 1.4rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color .25s var(--ease), transform .25s var(--ease);
+}
+
+.office-card:hover { border-color: var(--line-strong); transform: translateY(-3px); }
+
+.office-card__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .75rem;
+}
+
+.office-card__city { font-size: 1.1rem; }
+
+.office-card__label {
+  padding: .2rem .7rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-soft);
+  color: #8a4c1d;
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.office-card__row {
+  display: flex;
+  align-items: flex-start;
+  gap: .6rem;
+  margin-top: .45rem;
+  color: var(--muted);
+  font-size: .92rem;
+  line-height: 1.55;
+}
+
+.office-card__row .icon { margin-top: .2rem; flex: none; color: var(--accent); }
+.office-card__row a:hover { color: var(--ink); text-decoration: underline; }
+
+@media (min-width: 961px) and (max-width: 1200px) {
+  .office-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 960px) {
+  .contact__aside { position: static; }
+  .office-grid { grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+}
+
+/* -------------------------------------------------------------- accordion */
+.accordion { border-top: 1px solid var(--line); }
+
+.accordion__item { border-bottom: 1px solid var(--line); }
+
+.accordion__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem .25rem;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.accordion__trigger .icon {
+  flex: none;
+  transition: transform .3s var(--ease);
+  color: var(--muted);
+}
+
+.accordion__trigger.is-open .icon { transform: rotate(45deg); color: var(--accent); }
+
+.accordion__panel { padding: 0 .25rem 1.15rem; color: var(--muted); font-size: .95rem; }

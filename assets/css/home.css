@@ -1,0 +1,412 @@
+/* ==========================================================================
+   Travosca — home page
+   ========================================================================== */
+
+/* ------------------------------------------------------------------ hero */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 640px;
+  min-height: 100svh;
+  padding-top: calc(var(--header-h) + clamp(2rem, 6vh, 4.5rem));
+  padding-bottom: clamp(3rem, 7vh, 5rem);
+  color: #fff;
+  background: #15151a url("../img/hero-home.jpg") center / cover no-repeat;
+  isolation: isolate;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(8, 8, 12, .70) 0%, rgba(8, 8, 12, .38) 38%, rgba(8, 8, 12, .82) 100%);
+}
+
+.hero__inner { max-width: 62rem; }
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .4rem 1rem;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: var(--radius-pill);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .9);
+}
+
+.hero__title {
+  margin-top: 1.35rem;
+  color: #fff;
+  font-size: clamp(2.6rem, 7.5vw, 5rem);
+  font-weight: 700;
+  line-height: 1.03;
+  letter-spacing: -.03em;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, .35);
+}
+
+.hero__title em { font-style: normal; color: var(--star); }
+
+.hero__lead {
+  max-width: 34rem;
+  margin-top: 1.35rem;
+  color: rgba(255, 255, 255, .86);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+}
+
+/* ----------------------------------------------------------- trip search */
+.trip-search {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) auto;
+  align-items: center;
+  gap: .35rem;
+  max-width: 58rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: .5rem;
+  background: rgba(255, 255, 255, .96);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
+}
+
+.trip-search__field {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-width: 0;
+  padding: .55rem 1rem;
+  border-right: 1px solid var(--line);
+}
+
+.trip-search__icon { color: var(--accent); flex: none; }
+
+.trip-search__control {
+  width: 100%;
+  min-width: 0;
+  padding: .3rem 1.2rem .3rem 0;
+  border: 0;
+  background: none
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236f6f7a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right center / 1.05rem;
+  color: var(--ink);
+  font-size: .95rem;
+  appearance: none;
+  cursor: pointer;
+}
+
+.trip-search__control:focus { outline: none; }
+.trip-search__submit { height: 3.15rem; padding-inline: 1.75rem; }
+
+.hero__popular {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1rem;
+  margin-top: 1.75rem;
+}
+
+.hero__popular-label { font-size: .95rem; color: rgba(255, 255, 255, .8); }
+
+.hero__popular .chip {
+  padding: .4rem .95rem;
+  background: rgba(255, 255, 255, .12);
+  border-color: rgba(255, 255, 255, .3);
+  color: #fff;
+  font-size: .875rem;
+}
+
+.hero__popular .chip:hover,
+.hero__popular .chip.is-active {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+
+@media (max-width: 900px) {
+  .hero { background-image: url("../img/hero-home-sm.jpg"); }
+  .trip-search {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 24px;
+    padding: .75rem;
+    gap: .5rem;
+  }
+  .trip-search__field { border-right: 0; border-bottom: 1px solid var(--line); }
+  .trip-search__submit { grid-column: 1 / -1; width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .trip-search { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------ trip cards */
+.trip-card { display: flex; flex-direction: column; height: 100%; }
+
+.trip-card__media {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background: var(--bg-soft-2);
+}
+
+.trip-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s var(--ease);
+}
+
+.trip-card:hover .trip-card__media img { transform: scale(1.06); }
+
+.trip-card__tag {
+  position: absolute;
+  top: .85rem;
+  left: .85rem;
+  padding: .35rem .8rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, .93);
+  color: var(--ink);
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.trip-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.trip-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.trip-card__title { font-size: 1.3rem; }
+
+.trip-card__place {
+  display: flex;
+  align-items: center;
+  gap: .35rem;
+  margin-top: .2rem;
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+.trip-card__place .icon { width: .95rem; height: .95rem; }
+
+.trip-card__price {
+  flex: none;
+  color: var(--ink);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: right;
+  line-height: 1.25;
+}
+
+.trip-card__price span {
+  display: block;
+  color: var(--muted);
+  font-size: .8rem;
+  font-weight: 400;
+}
+
+.trip-card__text {
+  margin: .85rem 0 1.15rem;
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.trip-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+/* ----------------------------------------------------------- why choose us */
+.why {
+  position: relative;
+  color: #fff;
+  background: #15151a url("../img/bg-why-us.jpg") center / cover no-repeat;
+  isolation: isolate;
+}
+
+.why::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 10, 14, .74), rgba(10, 10, 14, .82));
+}
+
+.why .title { color: #fff; }
+.why .lead { color: rgba(255, 255, 255, .8); }
+
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+  height: 100%;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem);
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+
+.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+
+.feature-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  margin-bottom: .35rem;
+  border-radius: 1.15rem;
+  background: var(--bg-soft);
+}
+
+.feature-card__icon img { width: 2.6rem; height: 2.6rem; }
+.feature-card h3 { font-size: 1.28rem; }
+.feature-card p { color: var(--muted); font-size: .95rem; }
+.feature-card .link-arrow { margin-top: auto; padding-top: .5rem; }
+
+@media (max-width: 900px) {
+  .why { background-image: url("../img/bg-why-us-sm.jpg"); }
+  .why__grid { grid-template-columns: 1fr; max-width: 32rem; margin-inline: auto; }
+}
+
+/* --------------------------------------------------------------- partners */
+.partners__grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.partners__grid img {
+  height: clamp(1.6rem, 3vw, 2.4rem);
+  width: auto;
+  filter: grayscale(1);
+  opacity: .5;
+  transition: filter .3s var(--ease), opacity .3s var(--ease), transform .3s var(--ease);
+}
+
+.partners__grid img:hover { filter: grayscale(0); opacity: 1; transform: translateY(-3px); }
+
+/* ------------------------------------------------------------ testimonials */
+.quote-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  padding: clamp(1.5rem, 2.5vw, 2rem);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.quote-card__mark {
+  width: 2.25rem;
+  height: 2.25rem;
+  fill: var(--accent);
+  stroke: none;
+  color: var(--accent);
+}
+
+.quote-card__text { color: var(--ink-soft); font-size: 1.02rem; }
+
+.quote-card__person {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  margin-top: auto;
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--line);
+}
+
+.quote-card__person img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
+}
+
+.quote-card__person strong { display: block; color: var(--ink); font-weight: 600; }
+.quote-card__person span { color: var(--muted); font-size: .875rem; }
+
+.carousel__controls--center {
+  justify-content: center;
+  margin-top: clamp(1.25rem, 2.5vw, 2rem);
+}
+
+/* -------------------------------------------------------------- cta band */
+.cta-band {
+  position: relative;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  color: #fff;
+  background: #15151a url("../img/bg-explore.jpg") center / cover no-repeat;
+  isolation: isolate;
+}
+
+.cta-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(120deg, rgba(10, 10, 14, .88), rgba(10, 10, 14, .62));
+}
+
+.cta-band__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  flex-wrap: wrap;
+}
+
+.cta-band .eyebrow { color: var(--star); }
+.cta-band__title { color: #fff; font-size: clamp(1.6rem, 3.4vw, 2.6rem); max-width: 30rem; }
+.cta-band__text { margin-top: .85rem; color: rgba(255, 255, 255, .8); max-width: 32rem; }
+.cta-band__actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+@media (max-width: 900px) {
+  .cta-band { background-image: url("../img/bg-explore-sm.jpg"); }
+}
+
+/* ---------------------------------------------------------- section count */
+.carousel__count { color: var(--muted); font-size: .95rem; }
+
+/* ------------------------------------------------- carousel breakpoints */
+.carousel--trips,
+.carousel--quotes { --per-view: 3; }
+
+@media (max-width: 1100px) {
+  .carousel--trips { --per-view: 2; }
+  .carousel--quotes { --per-view: 2; }
+}
+
+@media (max-width: 760px) {
+  .carousel--trips,
+  .carousel--quotes { --per-view: 1; }
+  .carousel--quotes { --per-view: 1; }
+}
