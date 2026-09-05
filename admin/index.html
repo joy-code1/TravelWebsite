@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travosca admin</title>
+<meta name="description" content="Travosca admin console: content CMS, bookings, payments, leads, newsletter and analytics.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/admin.css">
+</head>
+<body class="admin">
+
+<div class="admin__shell">
+
+  <aside class="admin__side">
+    <a class="admin__brand" href="../home-page/index.html">
+      <img src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+    </a>
+    <nav class="admin__nav" aria-label="Admin sections">
+      <button class="admin__nav-btn is-active" type="button" data-tab="overview">Overview</button>
+      <button class="admin__nav-btn" type="button" data-tab="trips">Trips (CMS)</button>
+      <button class="admin__nav-btn" type="button" data-tab="bookings">Bookings</button>
+      <button class="admin__nav-btn" type="button" data-tab="leads">Leads</button>
+      <button class="admin__nav-btn" type="button" data-tab="newsletter">Newsletter</button>
+      <button class="admin__nav-btn" type="button" data-tab="analytics">Analytics</button>
+    </nav>
+    <div class="admin__side-foot">
+      <a class="admin__link" href="../home-page/index.html">← Back to site</a>
+      <button class="btn btn--outline-light btn--sm" type="button" data-logout hidden>Log out</button>
+    </div>
+  </aside>
+
+  <main class="admin__main">
+
+    <!-- ============================== login ============================== -->
+    <section class="admin__login" data-panel="login">
+      <h1>Travosca admin</h1>
+      <p>Enter the admin token (default: <code>travosca-admin</code>, override with <code>ADMIN_TOKEN</code>).</p>
+      <form data-login-form class="login-form">
+        <label class="sr-only" for="admin-token">Admin token</label>
+        <input class="input" id="admin-token" type="password" placeholder="Admin token" autocomplete="current-password" required>
+        <button class="btn btn--primary" type="submit">Sign in</button>
+        <p class="login-form__error" data-login-error role="alert" hidden></p>
+      </form>
+    </section>
+
+    <!-- ============================ overview ============================ -->
+    <section class="admin__panel" data-panel="overview" hidden>
+      <header class="admin__head">
+        <h1>Overview</h1>
+        <button class="btn btn--outline btn--sm" type="button" data-refresh="overview">Refresh</button>
+      </header>
+      <div class="stat-grid" data-stat-cards></div>
+      <div class="admin__cols">
+        <div class="card">
+          <h2>Funnel</h2>
+          <ul class="funnel" data-funnel></ul>
+        </div>
+        <div class="card">
+          <h2>Top pages</h2>
+          <table class="table" data-top-pages></table>
+        </div>
+      </div>
+      <div class="admin__cols">
+        <div class="card">
+          <h2>Top trips</h2>
+          <table class="table" data-top-trips></table>
+        </div>
+        <div class="card">
+          <h2>System</h2>
+          <table class="table" data-system></table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== trips ============================= -->
+    <section class="admin__panel" data-panel="trips" hidden>
+      <header class="admin__head">
+        <h1>Trips (CMS)</h1>
+        <div class="admin__head-actions">
+          <button class="btn btn--outline btn--sm" type="button" data-refresh="trips">Reload</button>
+          <button class="btn btn--primary btn--sm" type="button" data-add-trip>+ Add trip</button>
+          <button class="btn btn--primary btn--sm" type="button" data-save-trips>Save all (PUT /api/content)</button>
+        </div>
+      </header>
+      <p class="admin__note">Saving rewrites <code>server/data/content.json</code> and regenerates <code>assets/js/data.js</code> automatically. Baseline fields are edited here; translations (i18n.ru / i18n.uz) are preserved on save.</p>
+
+      <div class="card">
+        <h2>Settings</h2>
+        <div class="form-grid">
+          <label>Brand <input data-set="brand" type="text"></label>
+          <label>E-mail <input data-set="email" type="email"></label>
+          <label>Phone <input data-set="phone" type="text"></label>
+          <label>Address <input data-set="address" type="text"></label>
+        </div>
+      </div>
+
+      <div data-trip-list></div>
+    </section>
+
+    <!-- ============================ bookings ============================ -->
+    <section class="admin__panel" data-panel="bookings" hidden>
+      <header class="admin__head">
+        <h1>Bookings</h1>
+        <div class="admin__head-actions">
+          <select class="select" data-booking-filter>
+            <option value="">All statuses</option>
+            <option value="pending">pending</option>
+            <option value="paid">paid</option>
+            <option value="cancelled">cancelled</option>
+            <option value="completed">completed</option>
+          </select>
+          <button class="btn btn--outline btn--sm" type="button" data-refresh="bookings">Refresh</button>
+          <button class="btn btn--outline btn--sm" type="button" data-export="bookings">Export CSV</button>
+        </div>
+      </header>
+      <table class="table table--wide" data-bookings-table></table>
+    </section>
+
+    <!-- ============================== leads ============================= -->
+    <section class="admin__panel" data-panel="leads" hidden>
+      <header class="admin__head">
+        <h1>Leads</h1>
+        <div class="admin__head-actions">
+          <button class="btn btn--outline btn--sm" type="button" data-refresh="leads">Refresh</button>
+          <button class="btn btn--outline btn--sm" type="button" data-export="leads">Export CSV</button>
+        </div>
+      </header>
+      <table class="table table--wide" data-leads-table></table>
+    </section>
+
+    <!-- =========================== newsletter =========================== -->
+    <section class="admin__panel" data-panel="newsletter" hidden>
+      <header class="admin__head">
+        <h1>Newsletter</h1>
+        <div class="admin__head-actions">
+          <button class="btn btn--outline btn--sm" type="button" data-refresh="newsletter">Refresh</button>
+          <button class="btn btn--outline btn--sm" type="button" data-export="subscribers">Export CSV</button>
+        </div>
+      </header>
+      <table class="table" data-subscribers-table></table>
+    </section>
+
+    <!-- ============================ analytics =========================== -->
+    <section class="admin__panel" data-panel="analytics" hidden>
+      <header class="admin__head">
+        <h1>Analytics</h1>
+        <div class="admin__head-actions">
+          <button class="btn btn--outline btn--sm" type="button" data-refresh="overview">Refresh</button>
+          <button class="btn btn--outline btn--sm" type="button" data-export="events">Export events CSV</button>
+        </div>
+      </header>
+      <p class="admin__note">Cookie-free analytics collected via <code>POST /api/events</code> — pageviews, <code>[data-track]</code> clicks and outbound links.</p>
+      <div class="admin__cols">
+        <div class="card">
+          <h2>Recent events</h2>
+          <table class="table" data-recent-events></table>
+        </div>
+        <div class="card">
+          <h2>Traffic</h2>
+          <table class="table" data-top-pages2></table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="../assets/js/api.js" defer></script>
+<script src="../assets/js/admin.js" defer></script>
+</body>
+</html>

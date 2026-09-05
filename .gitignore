@@ -3,3 +3,10 @@ node_modules/
 Thumbs.db
 *.log
 .env
+# Runtime data of the Travosca backend (content.json IS committed as the seed)
+server/data/bookings.json
+server/data/leads.json
+server/data/subscribers.json
+server/data/comments.json
+server/data/events.json
+server/data/sessions.json

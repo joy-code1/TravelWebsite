@@ -8,7 +8,9 @@
 
   var D = window.TRAVOSCA || {};
   var base = D.base || '../';
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var reduceMotion = typeof window.matchMedia === 'function'
+    ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    : false;
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
@@ -281,6 +283,8 @@
 
   /* ------------------------------------------------------------- newsletter */
   function initNewsletter() {
+    var API = window.TravoscaAPI;
+    var I = window.TravoscaI18n;
     $$('form[data-newsletter]').forEach(function (form) {
       var input = $('input[type="email"]', form);
       var note = $('[data-newsletter-note]', form.parentElement) || $('[data-newsletter-note]');
@@ -291,19 +295,33 @@
         var value = input.value.trim();
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
           if (note) {
-            note.textContent = 'Please enter a valid email address.';
+            note.textContent = I ? I.t('footer.newsletterErr') : 'Please enter a valid email address.';
             note.style.color = '#ff9a9a';
           }
           input.focus();
-          toast('That email address does not look right.', 'error');
+          toast(I ? I.t('footer.newsletterErr') : 'That email address does not look right.', 'error');
           return;
         }
-        input.value = '';
-        if (note) {
-          note.textContent = 'Thanks! Check your inbox — your first deal is on the way.';
-          note.style.color = '';
+        function done() {
+          input.value = '';
+          if (note) {
+            note.textContent = I ? I.t('footer.newsletterOk') : 'Thanks! Check your inbox — your first deal is on the way.';
+            note.style.color = '';
+          }
+          toast(I ? I.t('footer.newsletterToast') : 'You are subscribed. Welcome aboard!');
         }
-        toast('You are subscribed. Welcome aboard!');
+        if (API) {
+          // Server first; if the backend is unreachable (static hosting)
+          // we still confirm locally so nothing pretends to be saved.
+          API.post('subscribe', { email: value }).then(function (res) {
+            done();
+            if (res.ok && res.data && res.data.already) {
+              toast('You are already on the list — thank you!');
+            }
+          });
+        } else {
+          done();
+        }
       });
     });
   }

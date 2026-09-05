@@ -1,20 +1,4 @@
-/* ==========================================================================
-   GENERATED FILE — do not edit by hand.
-   Source of truth: server/data/content.json
-   Regenerate with: npm run sync  (tools/sync-content.js)
-   or by saving content through PUT /api/content (the admin console).
-   Generated: 2026-09-05T10:45:02.922Z
-   ========================================================================== */
-(function () {
-  'use strict';
-
-  var script = document.currentScript || document.querySelector('script[src$="data.js"]');
-  var src = script ? script.getAttribute('src') : '../assets/js/data.js';
-  var base = src.replace(/assets\/js\/data\.js.*$/, '') || '../';
-
-  var img = function (name) { return base + 'assets/img/' + name; };
-
-  var CONTENT = {
+{
   "settings": {
     "brand": "Travosca",
     "siteName": "Travosca — travel, planned properly",
@@ -453,26 +437,11 @@
     }
   ],
   "partners": [
-    {
-      "name": "Booking.com",
-      "logo": "partner-booking.svg"
-    },
-    {
-      "name": "Katana",
-      "logo": "partner-katana.svg"
-    },
-    {
-      "name": "Travala",
-      "logo": "partner-travava.svg"
-    },
-    {
-      "name": "Bigui",
-      "logo": "partner-bigui.svg"
-    },
-    {
-      "name": "Jakmaen",
-      "logo": "partner-jakmaen.svg"
-    }
+    { "name": "Booking.com", "logo": "partner-booking.svg" },
+    { "name": "Katana", "logo": "partner-katana.svg" },
+    { "name": "Travala", "logo": "partner-travava.svg" },
+    { "name": "Bigui", "logo": "partner-bigui.svg" },
+    { "name": "Jakmaen", "logo": "partner-jakmaen.svg" }
   ],
   "posts": [
     {
@@ -538,30 +507,10 @@
     }
   ],
   "gallery": [
-    {
-      "photo": "gallery-diving.jpg",
-      "photoSm": "gallery-diving.jpg",
-      "title": "Free diving, open water",
-      "place": "Indian Ocean"
-    },
-    {
-      "photo": "gallery-dubai.jpg",
-      "photoSm": "gallery-dubai.jpg",
-      "title": "Burj Al Arab from the air",
-      "place": "Dubai"
-    },
-    {
-      "photo": "gallery-paris.jpg",
-      "photoSm": "gallery-paris.jpg",
-      "title": "Bicycle and shutters",
-      "place": "Montmartre, Paris"
-    },
-    {
-      "photo": "gallery-coast.jpg",
-      "photoSm": "gallery-coast.jpg",
-      "title": "Coastline at golden hour",
-      "place": "Mediterranean"
-    }
+    { "photo": "gallery-diving.jpg", "photoSm": "gallery-diving.jpg", "title": "Free diving, open water", "place": "Indian Ocean" },
+    { "photo": "gallery-dubai.jpg", "photoSm": "gallery-dubai.jpg", "title": "Burj Al Arab from the air", "place": "Dubai" },
+    { "photo": "gallery-paris.jpg", "photoSm": "gallery-paris.jpg", "title": "Bicycle and shutters", "place": "Montmartre, Paris" },
+    { "photo": "gallery-coast.jpg", "photoSm": "gallery-coast.jpg", "title": "Coastline at golden hour", "place": "Mediterranean" }
   ],
   "offices": [
     {
@@ -587,33 +536,7 @@
     }
   ],
   "months": [
-    "Any month",
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
+    "Any month", "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
   ]
-};
-
-  window.TRAVOSCA = {
-    base: base,
-    img: img,
-    settings: CONTENT.settings,
-    destinations: CONTENT.destinations,
-    features: CONTENT.features,
-    testimonials: CONTENT.testimonials,
-    partners: CONTENT.partners,
-    posts: CONTENT.posts,
-    gallery: CONTENT.gallery,
-    offices: CONTENT.offices,
-    months: CONTENT.months
-  };
-})();
+}

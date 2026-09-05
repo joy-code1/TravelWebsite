@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout — Travosca</title>
+<!-- BEGIN SEO -->
+<link rel="canonical" href="https://joy-code1.github.io/TravelWebsite/checkout.html">
+<meta property="og:title" content="Checkout — Travosca">
+<meta property="og:description" content="Pay for your Travosca booking with a card. Test mode: 4242 4242 4242 4242 succeeds, any card ending 0002 is declined.">
+<meta property="og:image" content="https://joy-code1.github.io/TravelWebsite/assets/img/hero-home.jpg">
+<meta property="og:url" content="https://joy-code1.github.io/TravelWebsite/checkout.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Travosca">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Checkout — Travosca">
+<meta name="twitter:description" content="Pay for your Travosca booking with a card. Test mode: 4242 4242 4242 4242 succeeds, any card ending 0002 is declined.">
+<meta name="twitter:image" content="https://joy-code1.github.io/TravelWebsite/assets/img/hero-home.jpg">
+<meta name="description" content="Pay for your Travosca booking with a card. Test mode: 4242 4242 4242 4242 succeeds, any card ending 0002 is declined.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Travosca","url":"https://joy-code1.github.io/TravelWebsite/","logo":"https://joy-code1.github.io/TravelWebsite/assets/img/logo-dark.png","email":"info@traveller.com","telephone":"+97 888 8888","address":{"@type":"PostalAddress","streetAddress":"732 Despard St, Atlanta, GA","addressCountry":"US"},"sameAs":[]}</script>
+<!-- END SEO -->
+<meta name="theme-color" content="#111114">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/checkout.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body data-page="checkout">
+
+<a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
+
+<header class="checkout-header">
+  <div class="container checkout-header__inner">
+    <a class="brand" href="home-page/index.html" aria-label="Travosca — home">
+      <img class="brand__logo brand__logo--dark" src="assets/img/logo-dark.png" alt="Travosca" width="560" height="71">
+    </a>
+    <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="nav.langLabel">
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="ru" aria-pressed="false">RU</button>
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="uz" aria-pressed="false">UZ</button>
+    </div>
+    <a class="btn btn--outline btn--sm" href="home-page/index.html" data-i18n="checkout.backToSite">Back to the site</a>
+  </div>
+</header>
+
+<main id="main" class="container checkout">
+
+  <section class="checkout__intro">
+    <h1 class="checkout__title" data-i18n="checkout.title">Checkout</h1>
+    <p class="checkout__lead" data-i18n="checkout.lead">Pay securely to confirm your booking.</p>
+  </section>
+
+  <div class="checkout__grid">
+
+    <!-- ============================ booking summary ============================ -->
+    <section class="panel" aria-labelledby="summary-title">
+      <h2 class="panel__title" id="summary-title" data-i18n="checkout.summary">Booking summary</h2>
+      <dl class="summary" data-checkout-summary>
+        <div><dt data-i18n="checkout.ref">Reference</dt><dd data-sum-ref>—</dd></div>
+        <div><dt data-i18n="checkout.trip">Trip</dt><dd data-sum-trip>—</dd></div>
+        <div><dt data-i18n="checkout.date">Date</dt><dd data-sum-date>—</dd></div>
+        <div><dt data-i18n="checkout.people">Travellers</dt><dd data-sum-people>—</dd></div>
+        <div><dt data-i18n="checkout.session">Payment session</dt><dd data-sum-session>—</dd></div>
+        <div class="summary__total"><dt data-i18n="checkout.total">Total to pay</dt><dd data-sum-total>—</dd></div>
+        <div><dt data-i18n="checkout.status">Status</dt><dd><span class="status-badge" data-sum-status>—</span></dd></div>
+      </dl>
+
+      <form class="lookup" data-lookup-form>
+        <label class="field__label" for="lk-email" data-i18n="checkout.emailLabel">E-mail used for the booking</label>
+        <div class="lookup__row">
+          <input class="input" id="lk-email" type="email" name="email" autocomplete="email" required>
+          <button class="btn btn--outline" type="submit" data-i18n="checkout.checkBtn">Check status</button>
+        </div>
+      </form>
+
+      <p class="panel__error" data-checkout-error role="alert" hidden></p>
+    </section>
+
+    <!-- ============================ payment form ============================ -->
+    <section class="panel" aria-labelledby="pay-title">
+      <h2 class="panel__title" id="pay-title">Card payment</h2>
+
+      <div class="chips-row" data-test-cards-label data-i18n-title="checkout.testCards" title="Test cards">
+        <button class="chip" type="button" data-test-card="4242424242424242" data-i18n="checkout.cardOkChip">4242 4242 4242 4242 — succeeds</button>
+        <button class="chip" type="button" data-test-card="4000000000000002" data-i18n="checkout.cardBadChip">…0002 — declined</button>
+      </div>
+
+      <form class="pay-form" data-pay-form novalidate>
+        <div class="field">
+          <label class="field__label" for="cc-number" data-i18n="checkout.cardNumber">Card number</label>
+          <input class="input" id="cc-number" name="number" type="text" inputmode="numeric" autocomplete="cc-number"
+                 placeholder="4242 4242 4242 4242" maxlength="23" required>
+          <p class="field__error" data-error-for="cc-number"></p>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label class="field__label" for="cc-expiry" data-i18n="checkout.cardExpiry">Expiry (MM/YY)</label>
+            <input class="input" id="cc-expiry" name="expiry" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="12/29" maxlength="5">
+          </div>
+          <div class="field">
+            <label class="field__label" for="cc-cvc" data-i18n="checkout.cardCvc">CVC</label>
+            <input class="input" id="cc-cvc" name="cvc" type="text" inputmode="numeric" autocomplete="cc-csc" placeholder="123" maxlength="4">
+          </div>
+        </div>
+        <div class="field">
+          <label class="field__label" for="cc-name" data-i18n="checkout.cardName">Name on card</label>
+          <input class="input" id="cc-name" name="cardName" type="text" autocomplete="cc-name" placeholder="SARA JAY">
+        </div>
+        <button class="btn btn--primary btn--lg btn--block" type="submit" data-pay-submit>Pay</button>
+        <p class="pay-form__note">Test mode — no real money moves. Card details are validated and never stored.</p>
+      </form>
+
+      <div class="pay-result" data-pay-result hidden></div>
+    </section>
+  </div>
+
+  <!-- ============================ how to test ============================ -->
+  <section class="panel panel--how" aria-labelledby="how-title">
+    <h2 class="panel__title" id="how-title" data-i18n="checkout.howTitle">How to test this</h2>
+    <ol class="how-steps">
+      <li data-i18n="checkout.how1">Start the backend: <code>npm start</code> (or <code>PORT=8000 npm start</code>) and open the site through <code>http://localhost:4173</code>.</li>
+      <li data-i18n="checkout.how2">Book any trip on the Packages page — you will get a <code>TRV-XXXXXX</code> reference.</li>
+      <li data-i18n="checkout.how3">Pay with card <code>4242 4242 4242 4242</code> (success) or any card ending <code>0002</code> (declined, HTTP 402).</li>
+      <li data-i18n="checkout.how4">Check the booking with the reference + e-mail lookup or in <code>/admin/</code> (Bookings tab).</li>
+    </ol>
+    <p class="how-curl">Or from a terminal:
+      <code>curl -s -X POST localhost:4173/api/bookings -H 'content-type: application/json' -d '{"tripId":"bali","date":"2026-12-01","people":2,"name":"Test","email":"t@example.com"}'</code>
+    </p>
+  </section>
+
+</main>
+
+<footer class="checkout-footer">
+  <p>© <span data-year>2026</span> <span data-i18n="footer.rightsSuffix">Travosca. All rights reserved.</span></p>
+</footer>
+
+<script src="assets/js/i18n.js" defer></script>
+<script src="assets/js/api.js" defer></script>
+<script src="assets/js/checkout.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+/* ==========================================================================
+   Travosca — admin console (zero-dependency, /admin/)
+   Monochrome palette + Poppins to match the public site.
+   ========================================================================== */
+
+body.admin {
+  background: #111114;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.admin__shell {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  min-height: 100vh;
+}
+
+.admin__side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.4rem 1.1rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.admin__brand img {
+  height: 2.1rem;
+  width: auto;
+  display: block;
+}
+
+.admin__nav {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.admin__nav-btn {
+  appearance: none;
+  border: 0;
+  border-radius: 8px;
+  padding: 0.55rem 0.8rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin__nav-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.admin__nav-btn.is-active {
+  background: #fff;
+  color: #111114;
+  font-weight: 600;
+}
+
+.admin__side-foot {
+  margin-top: auto;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.admin__link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.admin__link:hover {
+  color: #f4bc61;
+}
+
+.admin__main {
+  padding: 1.8rem 2rem 3rem;
+  min-width: 0;
+}
+
+.admin__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.2rem;
+}
+
+.admin__head h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.admin__head-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin__note {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  margin: 0 0 1.1rem;
+}
+
+.admin__note code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+}
+
+/* login */
+.admin__login {
+  max-width: 26rem;
+  margin: 8vh auto 0;
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+.admin__login h1 {
+  margin: 0 0 0.4rem;
+  font-size: 1.4rem;
+}
+
+.admin__login p {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.88rem;
+}
+
+.admin__login code {
+  font-family: ui-monospace, Menlo, monospace;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+}
+
+.login-form {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+
+.login-form__error {
+  color: #ff9a9a;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+body.admin .input,
+body.admin .select {
+  background: #1d1d22;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+body.admin .btn--outline {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+body.admin .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* cards + stats */
+.card {
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1.1rem;
+}
+
+.card h2 {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.admin__cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 1.2rem;
+}
+
+.stat {
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.stat__value {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #f4bc61;
+}
+
+.stat__label {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.funnel {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.funnel li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+  padding-bottom: 0.4rem;
+}
+
+/* tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 0.45rem 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+
+.table th {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.table--wide {
+  display: block;
+  overflow-x: auto;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.14rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.badge--paid { background: #1d5c31; color: #c9f2d4; }
+.badge--pending { background: #5c4a14; color: #f4bc61; }
+.badge--cancelled { background: #5c1a1a; color: #f3b1b1; }
+.badge--completed { background: #1a4a5c; color: #bfe6f3; }
+
+.table .btn {
+  margin: 0.15rem 0.3rem 0.15rem 0;
+  font-size: 0.75rem;
+}
+
+/* trips editor */
+.trip-edit {
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.trip-edit__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.trip-edit__head h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.7rem 0.9rem;
+}
+
+.form-grid label {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.form-grid .input,
+.form-grid .textarea {
+  font-size: 0.88rem;
+  padding: 0.45rem 0.6rem;
+}
+
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #1d1d22;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border-radius: 8px;
+  font: inherit;
+  padding: 0.5rem 0.65rem;
+}
+
+.trip-edit .field--full { grid-column: 1 / -1; }
+
+.trip-edit__error {
+  color: #ff9a9a;
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+}
+
+.admin__flash {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  background: #f4bc61;
+  color: #111114;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.admin__flash.is-error {
+  background: #ff9a9a;
+}
+
+@media (max-width: 900px) {
+  .admin__shell { grid-template-columns: 1fr; }
+  .admin__side {
+    position: static;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .admin__nav { display: flex; flex-wrap: wrap; }
+  .admin__side-foot { margin-top: 0; }
+  .admin__cols { grid-template-columns: 1fr; }
+  .admin__main { padding: 1.2rem 1rem 2.5rem; }
+}
