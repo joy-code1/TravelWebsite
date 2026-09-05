@@ -1,165 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacts Page</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — Travosca</title>
+<meta name="description" content="Talk to a Travosca planner. Offices in Atlanta, Bali and Singapore, plus answers to the questions we get most.">
+<meta name="theme-color" content="#111114">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/contact.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body>
-   <div class="block-1">
-            <div class="navbar">
-                <div class="left-side">
-                    <img src="./img/logo1 1.svg" alt="" class="logo-img">
-                    <a href="../home-page/index.html" class="text-home">Home</a>
-                </div>
-                <div class="right-side">
-                    <a href="../about_us-page/index.html" class="link-about">About Us</a>
-                    <select name="cars" id="cars" class="packages">
-                        <option value="volvo">Packages</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Destination</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select name="cars" id="cars">
-                        <option value="volvo">Blog</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <a href="../contact-page/index.html" class="contact-text">Contact</a>
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
+<body data-page="contact">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="../home-page/index.html" aria-label="Travosca — home">
+      <img class="brand__logo brand__logo--light" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+      <img class="brand__logo brand__logo--dark" src="../assets/img/logo-dark.png" alt="" aria-hidden="true" width="560" height="71">
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" data-nav="home" href="../home-page/index.html">Home</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="about" href="../about_us-page/index.html">About us</a></li>
+        <li class="nav__item">
+          <button class="nav__link" type="button" data-dropdown-toggle aria-expanded="false" aria-controls="nav-packages">
+            Packages
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+          </button>
+          <ul class="nav__submenu" id="nav-packages">
+            <li><a href="../package-page/index.html">All packages <small>7 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Asia">Asia <small>5 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Europe">Europe <small>2 trips</small></a></li>
+            <li><a href="../package-page/index.html?sort=price">Cheapest first <small>from $219</small></a></li>
+          </ul>
+        </li>
+        <li class="nav__item"><a class="nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="contact" href="../contact-page/index.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="icon-btn" type="button" data-search-open aria-label="Search destinations">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      </button>
+      <a class="btn btn--light btn--sm header__cta" href="../contact-page/index.html">Plan my trip</a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-menu"></use></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+  <div class="mobile-nav__top">
+    <a class="brand" href="../home-page/index.html" aria-label="Travosca — home">
+      <img class="brand__logo" src="../assets/img/logo-dark.png" alt="Travosca" width="560" height="71">
+    </a>
+    <button class="mobile-nav__close" type="button" data-menu-close aria-label="Close menu">
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-close"></use></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav__list">
+    <li><a class="mobile-nav__link" data-nav="home" href="../home-page/index.html">Home
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="about" href="../about_us-page/index.html">About us
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li>
+      <button class="mobile-nav__link" type="button" data-submenu-toggle aria-expanded="false" aria-controls="mobile-packages">Packages
+        <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
+      </button>
+      <div class="mobile-nav__sub" id="mobile-packages">
+        <a href="../package-page/index.html">All packages <small>7</small></a>
+        <a href="../package-page/index.html?region=Asia">Asia <small>5</small></a>
+        <a href="../package-page/index.html?region=Europe">Europe <small>2</small></a>
+      </div>
+    </li>
+    <li><a class="mobile-nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+    <li><a class="mobile-nav__link" data-nav="contact" href="../contact-page/index.html">Contact
+      <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
+  </ul>
+  <div class="mobile-nav__footer">
+    <div class="mobile-nav__socials">
+      <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+      <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+      <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+      <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
+    </div>
+    <a class="btn btn--primary btn--block" href="../contact-page/index.html">Plan my trip</a>
+  </div>
+</nav>
+
+<div class="scrim"></div>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Search destinations">
+  <div class="search-overlay__inner">
+    <div class="search-box" data-search-form>
+      <svg class="icon icon--lg" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
+      <input class="search-box__input" type="search" placeholder="Try “Bali”, “Paris” or “Alps”" aria-label="Search destinations" autocomplete="off">
+      <button class="btn btn--primary btn--sm" type="button" data-search-close>Close</button>
+    </div>
+    <div class="search-results"></div>
+    <p class="search-overlay__hint">Press <kbd>Esc</kbd> to close · <kbd>Enter</kbd> opens the first result</p>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero page-hero--contact">
+    <div class="container page-hero__inner">
+      <ul class="breadcrumbs">
+        <li><a href="../home-page/index.html">Home</a></li>
+        <li>Contact</li>
+      </ul>
+      <h1 class="page-hero__title">Contact</h1>
+      <p class="page-hero__sub">Tell us where you want to go. We usually answer within one working day.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact">
+      <div class="contact__form-wrap" data-reveal>
+        <p class="eyebrow">Send a message</p>
+        <h2 class="contact__title">Get in touch</h2>
+        <p class="contact__lead">Fill in the form and a planner will reply with ideas, dates and a rough price. No newsletter signup, no sales call.</p>
+
+        <form class="contact__form" data-contact-form novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label class="field__label" for="cf-name">Your name <span class="req">*</span></label>
+              <input class="input" id="cf-name" name="name" type="text" autocomplete="name" required>
+              <p class="field__error" data-error-for="cf-name"></p>
             </div>
-            <div class="text-center">
-                <h1>Contact</h1>
-                <p>Home >  Contact</p>
+            <div class="field">
+              <label class="field__label" for="cf-email">Your email <span class="req">*</span></label>
+              <input class="input" id="cf-email" name="email" type="email" autocomplete="email" required>
+              <p class="field__error" data-error-for="cf-email"></p>
             </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label class="field__label" for="cf-destination">Where do you want to go?</label>
+              <select class="select" id="cf-destination" name="destination">
+                <option value="">Not sure yet</option>
+                <option value="bali">Bali, Indonesia</option>
+                <option value="paris">Paris, France</option>
+                <option value="swiss">Swiss Alps</option>
+                <option value="thailand">Thailand</option>
+                <option value="taiwan">Taiwan</option>
+                <option value="lombok">Lombok, Indonesia</option>
+                <option value="singapore">Singapore</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="cf-people">Travellers</label>
+              <select class="select" id="cf-people" name="people">
+                <option value="1">1 traveller</option>
+                <option value="2" selected>2 travellers</option>
+                <option value="3">3 travellers</option>
+                <option value="4">4 travellers</option>
+                <option value="5">5 travellers</option>
+                <option value="6">6+ travellers</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="field__label" for="cf-subject">Subject</label>
+            <input class="input" id="cf-subject" name="subject" type="text">
+          </div>
+          <div class="field">
+            <label class="field__label" for="cf-message">Your message <span class="req">*</span></label>
+            <textarea class="textarea" id="cf-message" name="message" required minlength="20"></textarea>
+            <p class="field__error" data-error-for="cf-message"></p>
+          </div>
+          <button class="btn btn--primary btn--lg" type="submit">Send message</button>
+          <p class="contact__note" data-contact-note role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <aside class="contact__aside">
+        <h2 class="contact__aside-title">Our offices</h2>
+        <div class="office-grid" data-offices></div>
+
+        <div class="contact__faq">
+          <h2 class="contact__aside-title">Frequently asked</h2>
+          <div class="accordion" data-accordion>
+            <div class="accordion__item">
+              <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-1">
+                How far in advance should I book?
+                <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-plus"></use></svg>
+              </button>
+              <div class="accordion__panel" id="faq-1" hidden>
+                <p>Six to ten weeks is comfortable for most trips. Peak months (July, August, December) book out closer to four months ahead.</p>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-2">
+                Can you tailor a package?
+                <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-plus"></use></svg>
+              </button>
+              <div class="accordion__panel" id="faq-2" hidden>
+                <p>Every itinerary is a starting point. Add nights, swap hotels, change the pace — we re-quote before you commit to anything.</p>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-3">
+                What is included in the price?
+                <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-plus"></use></svg>
+              </button>
+              <div class="accordion__panel" id="faq-3" hidden>
+                <p>Guiding, accommodation, internal transfers and the activities listed on the trip page. International flights and travel insurance are quoted separately.</p>
+              </div>
+            </div>
+            <div class="accordion__item">
+              <button class="accordion__trigger" type="button" aria-expanded="false" aria-controls="faq-4">
+                How does the price guarantee work?
+                <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-plus"></use></svg>
+              </button>
+              <div class="accordion__panel" id="faq-4" hidden>
+                <p>Send us the same itinerary cheaper within 24 hours of booking and we refund the difference, or cancel with a full refund.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="block-send">
-            <div class="wrapper-block">
-                <div class="right-side-message">
-                    <input type="text" name="" id="" placeholder="Your Name" class="input">
-                    <input type="email" placeholder="Your Email" class="input">
-                    <input type="text" placeholder="Subject" class="input">
-                    <textarea name="" id="" cols="75" rows="7" placeholder="Your Message" class="textarea"></textarea>
-                    <button type="submit" class="send-button">Send Message</button>
-                </div>
-                <div class="left-side-message">
-                    <h1 class="get-text">
-                        Get In Touch
-                    </h1>
-                    <p class="message">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum vel dolorem quos iste commodi! Numquam nostrum minus magnam! Expedita, omnis!
-                    </p>
-                    <div class="cards">
-                        <div class="card">
-                            <p>Lhoksemawe, Aceh</p>
-                            <p class="number">
-                                <i class="fa-solid fa-phone"></i>+7589 367 503
-                            </p>
-                            <p class="email">
-                                <i class="fa-solid fa-envelope"></i>contact@domain.com
-                            </p>
-                            <p class="location">
-                                <i class="fa-solid fa-location-dot"></i>JI. Darussalam Hagu selatan
-                            </p>
-                        </div>
-                        <div class="card">
-                            <p>Lhoksemawe, Aceh</p>
-                            <p class="number">
-                                <i class="fa-solid fa-phone"></i>+7589 367 503
-                            </p>
-                            <p class="email">
-                                <i class="fa-solid fa-envelope"></i>contact@domain.com
-                            </p>
-                            <p class="location">
-                                <i class="fa-solid fa-location-dot"></i>JI. Darussalam Hagu selatan
-                            </p>
-                        </div>
-                        <div class="card">
-                            <p>Lhoksemawe, Aceh</p>
-                            <p class="number">
-                                <i class="fa-solid fa-phone"></i>+7589 367 503
-                            </p>
-                            <p class="email">
-                                <i class="fa-solid fa-envelope"></i>contact@domain.com
-                            </p>
-                            <p class="location">
-                                <i class="fa-solid fa-location-dot"></i>JI. Darussalam Hagu selatan
-                            </p>
-                        </div>
-                        <div class="card">
-                            <p>Lhoksemawe, Aceh</p>
-                            <p class="number">
-                                <i class="fa-solid fa-phone"></i>+7589 367 503
-                            </p>
-                            <p class="email">
-                                <i class="fa-solid fa-envelope"></i>contact@domain.com
-                            </p>
-                            <p class="location">
-                                <i class="fa-solid fa-location-dot"></i>JI. Darussalam Hagu selatan
-                            </p>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="container">
+      <h2 class="newsletter__title">Subscribe to get special price</h2>
+      <p class="newsletter__text">Don't want to miss something? Subscribe right now and get special promotion and monthly newsletter.</p>
+      <form class="newsletter__form" data-newsletter>
+        <label class="sr-only" for="newsletter-email">Your email address</label>
+        <input class="input" id="newsletter-email" type="email" name="email" placeholder="Type your email here..." autocomplete="email" required>
+        <button class="btn btn--accent" type="submit">Subscribe</button>
+      </form>
+      <p class="newsletter__note" data-newsletter-note role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img class="footer__logo" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
+        <p class="footer__about">Small-group trips, handpicked stays and guides who actually live where they lead. Travosca has been planning journeys since 2016.</p>
+        <div class="footer__socials">
+          <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
+          <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
+          <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
         </div>
-        <div class="block-6">
-            <div class="text-vers">
-                <p class="sub">
-                Subcribe to get special price
-            </p>
-            <p class="sub-desc">
-                Dont wanna miss something? subscribe right now and get special <br> promotion and monthly newsletter
-            </p>
-            </div>
-            <div class="input-email">
-                <input type="email" name="send" id="send" placeholder="Type your email here...">
-                <button type="submit">Subscribe</button>
-            </div>
-        </div>
-        <div class="footer">
-            <div class="left-side-footer">
-                <img src="./img/logo 2.svg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, suscipit?</p>
-            </div>
-            <div class="center-side-footer">
-                <p class="contact-info">Contact Information</p>
-                <div class="information-location">
-                    <p class="loc"><i class="fa-solid fa-location-dot"></i><span> 732 Despard St, Atlanta</span></p>
-                    <p class="em"><i class="fa-solid fa-envelope"></i><span> +97 888 8888</span></p>
-                    <p class="tel"><i class="fa-solid fa-phone"></i><span> info@traveller.com</span></p>
-                </div>
-            </div>
-            <div class="right-side-footer">
-                <p class="link">Quick Link</p>
-                <div class="navbar-footer">
-                    <a href="../home-page/index.html">Home</a>
-                    <a href="../about_us-page/index.html">About Us</a>
-                    <a href="../package-page/index.html">Tours</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-            <div class="end-footer">
-                <p class="follow">
-                    Follow Us
-                </p>
-                <div class="logs">
-                    <i class="fa-brands fa-facebook"></i>
-                    <i class="fa-brands fa-twitter"></i>
-                    <i class="fa-brands fa-youtube"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div>
+        <p class="footer__title">Quick links</p>
+        <ul class="footer__list">
+          <li><a href="../home-page/index.html">Home</a></li>
+          <li><a href="../about_us-page/index.html">About us</a></li>
+          <li><a href="../package-page/index.html">Packages</a></li>
+          <li><a href="../single_blog-page/index.html">Blog</a></li>
+          <li><a href="../contact-page/index.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Popular trips</p>
+        <ul class="footer__list">
+          <li><a href="../package-page/index.html?dest=bali">Bali, Indonesia</a></li>
+          <li><a href="../package-page/index.html?dest=paris">Paris, France</a></li>
+          <li><a href="../package-page/index.html?dest=swiss">Swiss Alps</a></li>
+          <li><a href="../package-page/index.html?dest=thailand">Thailand</a></li>
+          <li><a href="../package-page/index.html?dest=singapore">Singapore</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer__title">Contact information</p>
+        <ul class="footer__list footer__contact">
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-map-pin"></use></svg>
+            <span>732 Despard St, Atlanta, GA</span>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-phone"></use></svg>
+            <a href="tel:+978888888">+97&nbsp;888&nbsp;8888</a>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-mail"></use></svg>
+            <a href="mailto:info@traveller.com">info@traveller.com</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span data-year>2026</span> Travosca. All rights reserved.</p>
+      <nav aria-label="Legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Cookie settings</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" data-to-top aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-arrow-up"></use></svg>
+</button>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/ui.js" defer></script>
+<script src="../assets/js/contact.js" defer></script>
 </body>
 </html>
