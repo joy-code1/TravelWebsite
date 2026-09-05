@@ -8,7 +8,12 @@
 
   var D = window.TRAVOSCA || {};
   var U = window.TravoscaUI;
+  var API = window.TravoscaAPI;
+  var I = window.TravoscaI18n;
   var base = D.base || '../';
+
+  function t(key, vars) { return I ? I.t(key, vars) : key; }
+  function loc(item, name) { return I ? I.field(item, name) : item[name]; }
 
   function img(name) { return base + 'assets/img/' + name; }
 
@@ -32,7 +37,7 @@
 
   /* ------------------------------------------------------------- rendering */
   function cardHtml(d) {
-    var highlights = (d.highlights || []).slice(0, 3).map(function (h) {
+    var highlights = (loc(d, 'highlights') || d.highlights || []).slice(0, 3).map(function (h) {
       return '<li>' + U.icon('check') + esc(h) + '</li>';
     }).join('');
 
@@ -41,24 +46,24 @@
         '<div class="pkg-card__media">' +
           '<img src="' + img(d.photoSm) + '" srcset="' + img(d.photoSm) + ' 560w, ' + img(d.photo) + ' 900w" ' +
             'sizes="(max-width: 640px) 92vw, (max-width: 1000px) 46vw, 31vw" ' +
-            'alt="' + esc(d.title + ', ' + d.country) + '" width="900" height="620" loading="lazy" decoding="async">' +
-          '<span class="pkg-card__tag">' + esc(d.tag) + '</span>' +
+            'alt="' + esc(loc(d, 'title') + ', ' + loc(d, 'country')) + '" width="900" height="620" loading="lazy" decoding="async">' +
+          '<span class="pkg-card__tag">' + esc(loc(d, 'tag')) + '</span>' +
           '<span class="pkg-card__region">' + esc(d.region) + '</span>' +
         '</div>' +
         '<div class="pkg-card__body">' +
           '<div class="pkg-card__top">' +
             '<div>' +
-              '<h3 class="pkg-card__title">' + esc(d.title) + '</h3>' +
-              '<p class="pkg-card__place">' + esc(d.country) + '</p>' +
+              '<h3 class="pkg-card__title">' + esc(loc(d, 'title')) + '</h3>' +
+              '<p class="pkg-card__place">' + esc(loc(d, 'country')) + '</p>' +
             '</div>' +
             '<p class="pkg-card__price">$' + d.price + '<span>/ ' + d.days + ' days</span></p>' +
           '</div>' +
-          '<p class="pkg-card__text">' + esc(d.excerpt) + '</p>' +
+          '<p class="pkg-card__text">' + esc(loc(d, 'excerpt')) + '</p>' +
           '<ul class="pkg-card__list">' + highlights + '</ul>' +
           '<div class="pkg-card__foot">' +
             '<span class="rating" aria-label="' + d.rating + ' out of 5">' + stars(d.rating) +
               '<span class="rating__value">' + d.rating.toFixed(1) + ' (' + d.reviews + ')</span></span>' +
-            '<button class="btn btn--primary btn--sm" type="button" data-book="' + esc(d.id) + '">Booking now</button>' +
+            '<button class="btn btn--primary btn--sm" type="button" data-track="book-' + esc(d.id) + '" data-book="' + esc(d.id) + '">Booking now</button>' +
           '</div>' +
         '</div>' +
       '</article>';
@@ -66,7 +71,7 @@
 
   function visibleTrips() {
     var list = (D.destinations || []).filter(function (d) {
-      var haystack = (d.title + ' ' + d.country + ' ' + d.region + ' ' + d.tag + ' ' + d.excerpt).toLowerCase();
+      var haystack = (loc(d, 'title') + ' ' + loc(d, 'country') + ' ' + d.region + ' ' + loc(d, 'tag') + ' ' + loc(d, 'excerpt')).toLowerCase();
       var matchesQuery = !state.query || haystack.indexOf(state.query.toLowerCase()) > -1;
       var matchesRegion = !state.region || d.region === state.region;
       return matchesQuery && matchesRegion;
@@ -116,11 +121,11 @@
     if (!bar || !text) return;
 
     var parts = [];
-    if (state.month) parts.push('Travelling in ' + (D.months[parseInt(state.month, 10)] || ''));
-    if (state.people) parts.push(state.people + (state.people === '1' ? ' traveller' : ' travellers'));
+    if (state.month) parts.push(t('pkg.contextTravelling') + ' ' + (I ? I.month(parseInt(state.month, 10)) : (D.months[parseInt(state.month, 10)] || '')));
+    if (state.people) parts.push(t('common.travellersCount', { n: state.people }));
     if (state.dest) {
       var trip = (D.destinations || []).filter(function (d) { return d.id === state.dest; })[0];
-      if (trip) parts.unshift('Looking at ' + trip.title);
+      if (trip) parts.unshift(t('pkg.contextLooking') + ' ' + loc(trip, 'title'));
     }
 
     if (!parts.length) { bar.hidden = true; return; }
@@ -205,16 +210,16 @@
     wrap.innerHTML = D.posts.map(function (post, i) {
       var url = base + 'single_blog-page/index.html?post=' + encodeURIComponent(post.id);
       var media = i === 0
-        ? '<img src="' + img(post.photo) + '" alt="' + esc(post.title) + '" loading="lazy" decoding="async">'
+        ? '<img src="' + img(post.photo) + '" alt="' + esc(loc(post, 'title')) + '" loading="lazy" decoding="async">'
         : '';
       return '' +
         '<article class="article-card' + (i === 0 ? ' article-card--featured' : '') + '" data-reveal style="--reveal-delay:' + (i * 110) + 'ms">' +
           media +
           '<div class="article-card__body">' +
-            '<p class="article-card__meta">' + esc(post.category) + '</p>' +
-            '<h3 class="article-card__title">' + esc(post.title) + '</h3>' +
+  '<p class="article-card__meta">' + esc(post.category) + '</p>' +
+            '<h3 class="article-card__title">' + esc(loc(post, 'title')) + '</h3>' +
             '<div class="article-card__rule"></div>' +
-            '<p class="article-card__text">' + esc(post.excerpt) + '</p>' +
+            '<p class="article-card__text">' + esc(loc(post, 'excerpt')) + '</p>' +
             '<a class="link-arrow" href="' + url + '">Read more' + U.icon('arrow-right') + '</a>' +
           '</div>' +
         '</article>';
@@ -233,9 +238,9 @@
     if (summary) {
       summary.innerHTML =
         '<img src="' + img(trip.photoSm) + '" alt="" loading="lazy">' +
-        '<div><strong>' + esc(trip.title) + ', ' + esc(trip.country) + '</strong>' +
-        '<span>' + trip.days + ' days · ' + esc(trip.tag) + '</span>' +
-        '<span class="booking-summary__price">$' + trip.price + ' per person</span></div>';
+'<div><strong>' + esc(loc(trip, 'title')) + ', ' + esc(loc(trip, 'country')) + '</strong>' +
+        '<span>' + trip.days + ' ' + t('common.daysUnit') + ' · ' + esc(loc(trip, 'tag')) + '</span>' +
+        '<span class="booking-summary__price">$' + trip.price + ' ' + t('common.perPerson') + '</span></div>';
     }
     if (form) {
       form.hidden = false;
@@ -264,49 +269,178 @@
       var ok = true;
 
       if (!name.value.trim()) {
-        U.setFieldError(name, 'Please tell us who is travelling.');
+        U.setFieldError(name, t('book.errName'));
         ok = false;
       } else { U.setFieldError(name, ''); }
 
       if (!U.validateEmail(email.value)) {
-        U.setFieldError(email, 'We need a valid email to send your confirmation.');
+        U.setFieldError(email, t('book.errEmail'));
         ok = false;
       } else { U.setFieldError(email, ''); }
 
       if (!date.value) {
-        U.setFieldError(date, 'Pick the date you would like to fly.');
+        U.setFieldError(date, t('book.errDate'));
         ok = false;
       } else { U.setFieldError(date, ''); }
 
       if (!ok) {
-        U.toast('Please check the highlighted fields.', 'error');
+        U.toast(t('book.errCheck'), 'error');
         return;
       }
 
       var trip = (D.destinations || []).filter(function (d) {
         return d.id === form.getAttribute('data-trip');
       })[0];
+      var tripName = trip ? loc(trip, 'title') : 'this trip';
 
-      form.hidden = true;
-      if (success) {
-        success.hidden = false;
-        success.innerHTML =
-          '<h3>Request sent 🎉</h3>' +
-          '<p>Thanks ' + esc(name.value.trim().split(' ')[0]) + ' — we have your request for <strong>' +
-          esc(trip ? trip.title : 'this trip') + '</strong> on ' + esc(date.value) +
-          '. A planner will email ' + esc(email.value.trim()) + ' within 24 hours.</p>' +
-          '<button class="btn btn--outline btn--block" type="button" data-modal-close>Close</button>';
-        success.querySelector('[data-modal-close]').addEventListener('click', function () {
-          U.modal.close(modal);
-        });
+      function localSuccess() {
+        // Static-hosting fallback: nothing is sent anywhere, the modal just
+        // confirms the request the way it did before the backend existed.
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.innerHTML =
+            '<h3>' + esc(t('book.localTitle')) + '</h3>' +
+            '<p>' + esc(t('book.localText', {
+              name: name.value.trim().split(' ')[0],
+              trip: tripName,
+              date: date.value,
+              email: email.value.trim()
+            })) + '</p>' +
+            '<p class="booking-offline-note">' + esc(t('book.savedOfflineNote')) + '</p>' +
+            '<button class="btn btn--outline btn--block" type="button" data-modal-close>' + esc(t('common.close')) + '</button>';
+          success.querySelector('[data-modal-close]').addEventListener('click', function () {
+            U.modal.close(modal);
+          });
+        }
+        U.toast(t('book.toastLocal'));
       }
-      U.toast('Booking request sent. We will be in touch shortly.');
+
+      function serverSuccess(data) {
+        var checkoutHref = data.checkoutUrl ? base + String(data.checkoutUrl).replace(/^\//, '') : '';
+        if (API) {
+          API.rememberBooking({
+            ref: data.ref,
+            total: data.total,
+            status: data.status,
+            tripId: data.booking ? data.booking.tripId : (trip ? trip.id : ''),
+            tripTitle: data.booking ? data.booking.tripTitle : tripName,
+            date: date.value,
+            people: people ? parseInt(people.value, 10) : 1,
+            name: name.value.trim(),
+            email: email.value.trim(),
+            checkoutUrl: data.checkoutUrl
+          });
+        }
+        form.hidden = true;
+        if (success) {
+          success.hidden = false;
+          success.innerHTML =
+            '<h3>' + esc(t('book.savedTitle')) + '</h3>' +
+            '<p class="booking-ref-line">' + esc(t('book.savedRef')) +
+              ': <strong>' + esc(data.ref) + '</strong></p>' +
+            '<p>' + esc(tripName) + ' · ' + esc(date.value) + ' · ' +
+              esc(t('common.travellersCount', { n: people ? people.value : '1' })) + '</p>' +
+            '<p class="booking-total-line">' + esc(t('book.total')) + ': <strong>$' + data.total +
+              '</strong> · ' + esc(t('book.status')) + ': <strong>' + esc(t('status.' + data.status)) + '</strong></p>' +
+            '<p class="booking-hint">' + esc(t('book.lookupHint')) + '</p>' +
+            (checkoutHref
+              ? '<a class="btn btn--primary btn--block" href="' + esc(checkoutHref) + '" data-track="checkout-link">' + esc(t('book.goCheckout')) + '</a>'
+              : '') +
+            '<button class="btn btn--outline btn--block" type="button" data-modal-close>' + esc(t('common.close')) + '</button>';
+          success.querySelector('[data-modal-close]').addEventListener('click', function () {
+            U.modal.close(modal);
+          });
+        }
+        U.toast(t('book.toastSaved'));
+        renderLastBooking();
+      }
+
+      if (API) {
+        // Real booking on the server first; if the backend is not reachable
+        // (GitHub Pages, file://, python http.server) fall back to the local
+        // confirmation so the flow never dead-ends.
+        var submitBtn = form.querySelector('[type="submit"]');
+        if (submitBtn) submitBtn.disabled = true;
+        API.post('bookings', {
+          tripId: form.getAttribute('data-trip'),
+          date: date.value,
+          people: people ? people.value : '1',
+          name: name.value.trim(),
+          email: email.value.trim()
+        }).then(function (res) {
+          if (submitBtn) submitBtn.disabled = false;
+          if (res.ok && res.data && res.data.ref) {
+            serverSuccess(res.data);
+          } else if (res.status === 400 && res.data && res.data.details) {
+            // Server-side validation refused the payload — surface it.
+            form.hidden = false;
+            if (success) success.hidden = true;
+            var details = res.data.details;
+            if (details.date && date) U.setFieldError(date, details.date);
+            if (details.people && people) U.setFieldError(people, details.people);
+            if (details.name && name) U.setFieldError(name, details.name);
+            if (details.email && email) U.setFieldError(email, details.email);
+            U.toast(t('book.errCheck'), 'error');
+          } else {
+            localSuccess();
+          }
+        });
+      } else {
+        localSuccess();
+      }
     });
+
 
     [].forEach.call(form.querySelectorAll('input, select'), function (input) {
       input.addEventListener('input', function () { U.setFieldError(input, ''); });
       input.addEventListener('change', function () { U.setFieldError(input, ''); });
     });
+  }
+
+  /* ------------------------------------------------- last booking (return block) */
+  function renderLastBooking() {
+    var section = document.querySelector('[data-last-booking]');
+    var body = document.querySelector('[data-last-booking-body]');
+    if (!section || !body) return;
+    var b = API ? API.lastBooking() : null;
+    if (!b || !b.ref) { section.hidden = true; return; }
+    section.hidden = false;
+    body.innerHTML =
+      '<p class="last-booking__ref">' + esc(t('book.savedRef')) + ': <strong>' + esc(b.ref) + '</strong></p>' +
+      '<dl class="last-booking__grid">' +
+        '<div><dt>' + esc(t('book.tripLabel')) + '</dt><dd>' + esc(b.tripTitle || b.tripId || '') + '</dd></div>' +
+        '<div><dt>' + esc(t('book.dateLabel')) + '</dt><dd>' + esc(b.date || '') + '</dd></div>' +
+        '<div><dt>' + esc(t('book.peopleLabel')) + '</dt><dd>' + b.people + '</dd></div>' +
+        '<div><dt>' + esc(t('book.total')) + '</dt><dd>$' + b.total + '</dd></div>' +
+        '<div><dt>' + esc(t('book.status')) + '</dt><dd data-last-booking-status>' + esc(t('status.' + (b.status || 'pending'))) + '</dd></div>' +
+      '</dl>' +
+      (b.checkoutUrl && b.status === 'pending'
+        ? '<a class="btn btn--primary btn--sm" data-track="last-booking-pay" href="' +
+            esc(base + String(b.checkoutUrl).replace(/^\//, '')) + '">' + esc(t('book.goCheckout')) + '</a>'
+        : '');
+
+    // If the backend is up, refresh the status of the remembered booking.
+    if (API && b.email) {
+      API.get('bookings/lookup?ref=' + encodeURIComponent(b.ref) + '&email=' + encodeURIComponent(b.email))
+        .then(function (res) {
+          if (res.ok && res.data && res.data.booking) {
+            var fresh = res.data.booking;
+            var cell = body.querySelector('[data-last-booking-status]');
+            if (cell) cell.textContent = t('status.' + fresh.status);
+            if (API) API.rememberBooking(Object.assign({}, b, { status: fresh.status }));
+          }
+        });
+    }
+  }
+
+  function initLastBooking() {
+    var section = document.querySelector('[data-last-booking]');
+    var dismiss = document.querySelector('[data-last-booking-dismiss]');
+    if (dismiss && section) {
+      dismiss.addEventListener('click', function () { section.hidden = true; });
+    }
+    renderLastBooking();
   }
 
   readParams();
@@ -315,4 +449,12 @@
   renderArticles();
   initFilters();
   initBooking();
+  initLastBooking();
+
+  document.addEventListener('travosca:langchange', function () {
+    renderContext();
+    render();
+    renderArticles();
+    renderLastBooking();
+  });
 })();

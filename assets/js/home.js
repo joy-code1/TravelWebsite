@@ -8,7 +8,10 @@
 
   var D = window.TRAVOSCA || {};
   var U = window.TravoscaUI;
+  var I = window.TravoscaI18n;
   var base = D.base || '../';
+
+  function loc(item, name) { return I ? I.field(item, name) : item[name]; }
 
   function img(name) { return base + 'assets/img/' + name; }
 
@@ -40,18 +43,18 @@
           '<div class="trip-card__media">' +
             '<img src="' + img(d.photoSm) + '" srcset="' + img(d.photoSm) + ' 560w, ' + img(d.photo) + ' 900w" ' +
               'sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 30vw" ' +
-              'alt="' + esc(d.title + ', ' + d.country) + '" width="900" height="620" loading="lazy" decoding="async">' +
-            '<span class="trip-card__tag">' + esc(d.tag) + '</span>' +
+              'alt="' + esc(loc(d, 'title') + ', ' + loc(d, 'country')) + '" width="900" height="620" loading="lazy" decoding="async">' +
+            '<span class="trip-card__tag">' + esc(loc(d, 'tag')) + '</span>' +
           '</div>' +
           '<div class="trip-card__body">' +
             '<div class="trip-card__top">' +
               '<div>' +
-                '<h3 class="trip-card__title">' + esc(d.title) + '</h3>' +
-                '<p class="trip-card__place">' + U.icon('map-pin', 'icon--sm') + esc(d.country) + '</p>' +
+                '<h3 class="trip-card__title">' + esc(loc(d, 'title')) + '</h3>' +
+                '<p class="trip-card__place">' + U.icon('map-pin', 'icon--sm') + esc(loc(d, 'country')) + '</p>' +
               '</div>' +
               '<p class="trip-card__price">$' + d.price + '<span>/ ' + d.days + ' days</span></p>' +
             '</div>' +
-            '<p class="trip-card__text">' + esc(d.excerpt) + '</p>' +
+            '<p class="trip-card__text">' + esc(loc(d, 'excerpt')) + '</p>' +
             '<div class="trip-card__foot">' +
               '<span class="rating" aria-label="' + d.rating + ' out of 5">' + stars(d.rating) +
                 '<span class="rating__value">' + d.rating.toFixed(1) + ' (' + d.reviews + ')</span></span>' +
@@ -73,8 +76,8 @@
       return '' +
         '<article class="feature-card" data-reveal style="--reveal-delay:' + (i * 110) + 'ms">' +
           '<span class="feature-card__icon"><img src="' + img(f.icon) + '" alt="" width="96" height="98" loading="lazy"></span>' +
-          '<h3>' + esc(f.title) + '</h3>' +
-          '<p>' + esc(f.text) + '</p>' +
+          '<h3>' + esc(loc(f, 'title')) + '</h3>' +
+          '<p>' + esc(loc(f, 'text')) + '</p>' +
           '<a class="link-arrow" href="' + base + f.link + '">Learn more' + U.icon('arrow-right') + '</a>' +
         '</article>';
     }).join('');
@@ -97,11 +100,11 @@
       return '' +
         '<article class="quote-card">' +
           '<svg class="quote-card__mark" aria-hidden="true"><use href="' + base + 'assets/img/icons.svg#i-quote"></use></svg>' +
-          '<p class="quote-card__text">“' + esc(t.text) + '”</p>' +
+          '<p class="quote-card__text">“' + esc(loc(t, 'text')) + '”</p>' +
           '<div class="rating rating--lg" aria-label="' + t.rating + ' out of 5">' + stars(t.rating) + '</div>' +
           '<div class="quote-card__person">' +
             '<img src="' + img(t.avatar) + '" alt="' + esc(t.name) + '" width="260" height="260" loading="lazy">' +
-            '<div><strong>' + esc(t.name) + '</strong><span>' + esc(t.role) + '</span></div>' +
+            '<div><strong>' + esc(t.name) + '</strong><span>' + esc(loc(t, 'role')) + '</span></div>' +
           '</div>' +
         '</article>';
     }).join('');
@@ -140,9 +143,17 @@
     });
   }
 
-  renderDestinations();
-  renderFeatures();
-  renderPartners();
-  renderTestimonials();
+  function renderAll() {
+    renderDestinations();
+    renderFeatures();
+    renderPartners();
+    renderTestimonials();
+    U.carousels(document);
+    U.reveal();
+  }
+
+  renderAll();
   initTripSearch();
+
+  document.addEventListener('travosca:langchange', renderAll);
 })();

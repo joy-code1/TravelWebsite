@@ -1,0 +1,241 @@
+/* ==========================================================================
+   Travosca — checkout page (test-mode card payment)
+   Same design tokens as the rest of the site: Poppins, monochrome, accent.
+   ========================================================================== */
+
+.checkout-header {
+  border-bottom: 1px solid rgba(17, 17, 20, 0.1);
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.checkout-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.checkout-header .brand__logo {
+  height: 2.4rem;
+  width: auto;
+}
+
+.checkout {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+}
+
+.checkout__intro {
+  margin-bottom: 1.8rem;
+}
+
+.checkout__title {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 600;
+}
+
+.checkout__lead {
+  margin: 0;
+  color: var(--muted);
+}
+
+.checkout__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid rgba(17, 17, 20, 0.12);
+  border-radius: var(--radius-lg, 16px);
+  padding: 1.5rem 1.6rem;
+}
+
+.panel__title {
+  margin: 0 0 1.1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.panel__error {
+  margin: 0.9rem 0 0;
+  color: #b3261e;
+  font-size: 0.88rem;
+}
+
+.summary {
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.summary > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.92rem;
+}
+
+.summary dt {
+  color: var(--muted);
+}
+
+.summary dd {
+  margin: 0;
+  font-weight: 500;
+  text-align: right;
+}
+
+.summary__total {
+  border-top: 1px solid rgba(17, 17, 20, 0.12);
+  padding-top: 0.65rem;
+  font-size: 1.05rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.18rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(17, 17, 20, 0.08);
+}
+
+.status-badge.is-paid {
+  background: #103c1e;
+  color: #b8f0c4;
+}
+
+.status-badge.is-pending {
+  background: #4a3a10;
+  color: #f4bc61;
+}
+
+.status-badge.is-cancelled {
+  background: #3f1010;
+  color: #f3b1b1;
+}
+
+.lookup {
+  margin-top: 1.2rem;
+  border-top: 1px dashed rgba(17, 17, 20, 0.18);
+  padding-top: 1rem;
+}
+
+.lookup__row {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.35rem;
+}
+
+.lookup__row .input {
+  flex: 1;
+}
+
+.chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.pay-form__note {
+  margin: 0.8rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.pay-result {
+  margin-top: 1.1rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--radius, 10px);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.pay-result.is-success {
+  background: #103c1e;
+  color: #dff5e4;
+}
+
+.pay-result.is-declined {
+  background: #3f1010;
+  color: #f8cfcf;
+}
+
+.pay-result p {
+  margin: 0.2rem 0 0;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.pay-result strong {
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.panel--how {
+  margin-top: 1.5rem;
+}
+
+.how-steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.how-curl {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+.how-curl code,
+.how-steps code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: rgba(17, 17, 20, 0.06);
+  padding: 0.08em 0.35em;
+  border-radius: 5px;
+}
+
+.checkout-footer {
+  border-top: 1px solid rgba(17, 17, 20, 0.1);
+  padding: 1.2rem 0 1.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .checkout__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .lookup__row {
+    flex-direction: column;
+  }
+
+  .checkout-header__inner .btn {
+    display: none;
+  }
+}

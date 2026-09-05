@@ -1288,3 +1288,101 @@ h1, h2, h3, h4 {
 }
 
 .noscript-note a { color: #8a4c1d; text-decoration: underline; }
+
+/* ------------------------------------------------------- language switch */
+/* Added for EN/RU/UZ support — matches the existing monochrome look.      */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(17, 17, 20, 0.25);
+  border-radius: 999px;
+  overflow: hidden;
+  background: transparent;
+}
+
+.lang-switch__btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0.3rem 0.55rem;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--ink, #111114);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-switch__btn + .lang-switch__btn {
+  border-left: 1px solid rgba(17, 17, 20, 0.15);
+}
+
+.lang-switch__btn:hover {
+  background: rgba(17, 17, 20, 0.06);
+}
+
+.lang-switch__btn.is-active {
+  background: var(--ink, #111114);
+  color: #fff;
+}
+
+.lang-switch--mobile {
+  border-color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 1rem;
+}
+
+.lang-switch--mobile .lang-switch__btn {
+  color: #fff;
+}
+
+.lang-switch--mobile .lang-switch__btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lang-switch--mobile .lang-switch__btn.is-active {
+  background: #fff;
+  color: var(--ink, #111114);
+}
+
+@media (max-width: 900px) {
+  .header__actions .lang-switch { display: none; }
+}
+
+/* -------------------------------------------------- offline mode banner */
+.api-status {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 90;
+  max-width: min(92vw, 40rem);
+  padding: 0.65rem 1rem;
+  background: #111114;
+  color: #f4bc61;
+  border: 1px solid rgba(244, 188, 97, 0.4);
+  border-radius: var(--radius, 10px);
+  font-size: 0.8rem;
+  line-height: 1.45;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------------------------------------------ booking result extras */
+.booking-ref-line,
+.booking-total-line {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.booking-ref-line strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+
+.booking-hint,
+.booking-offline-note {
+  font-size: 0.82rem;
+  color: var(--muted, #6d6d72);
+  margin: 0.5rem 0 0.9rem;
+}

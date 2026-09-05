@@ -1,13 +1,16 @@
 /* ==========================================================================
    Travosca — single blog page
    Renders the article (chosen with ?post=…), the sidebar and the comment
-   thread.  Comments are stored locally in the browser — there is no back end.
+   thread.  Comments are saved through the backend API when it is reachable
+   and fall back to localStorage on static hosting.
    ========================================================================== */
 (function () {
   'use strict';
 
   var D = window.TRAVOSCA || {};
   var U = window.TravoscaUI;
+  var API = window.TravoscaAPI;
+  var I = window.TravoscaI18n;
   var base = D.base || '../';
 
   function img(name) { return base + 'assets/img/' + name; }
@@ -98,8 +101,9 @@
     var body = document.querySelector('[data-blog-body]');
     if (!post || !body) return;
 
-    document.title = post.title + ' — Travosca';
-    if (titleEl) titleEl.textContent = post.title;
+    var title = I ? I.field(post, 'title') : post.title;
+    document.title = title + ' — Travosca';
+    if (titleEl) titleEl.textContent = title;
     if (metaEl) {
       metaEl.innerHTML =
         '<p>' + U.icon('users', 'icon--sm') + esc(post.author) + '</p>' +
@@ -162,7 +166,7 @@
       var isCurrent = current && p.id === current.id;
       return '<a class="widget__post" href="' + url + '"' + (isCurrent ? ' aria-current="page"' : '') + '>' +
         '<img src="' + img(p.photoSm || p.photo) + '" alt="" loading="lazy">' +
-        '<span><span class="widget__post-title">' + esc(p.title) + '</span>' +
+        '<span><span class="widget__post-title">' + esc(I ? I.field(p, 'title') : p.title) + '</span>' +
         '<span class="widget__post-date">' + esc(p.date) + '</span></span></a>';
     }).join('');
   }
@@ -191,12 +195,25 @@
     }).join('');
   }
 
-  function renderComments(post) {
+  function renderComments(post, serverComments) {
     var list = document.querySelector('[data-comment-list]');
     var count = document.querySelector('[data-comment-count]');
     if (!list) return;
 
-    var comments = SEED_COMMENTS.concat(loadComments(post.id));
+    var comments;
+    if (serverComments) {
+      // Normalise server records into the shape the template expects.
+      comments = serverComments.map(function (c) {
+        var when = new Date(c.createdAt);
+        return {
+          name: c.name,
+          date: isNaN(when.getTime()) ? c.createdAt : when.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+          text: c.text
+        };
+      });
+    } else {
+      comments = SEED_COMMENTS.concat(loadComments(post.id));
+    }
     list.innerHTML = comments.map(function (c) {
       var avatar = c.avatar
         ? '<img src="' + img(c.avatar) + '" alt="" loading="lazy">'
@@ -211,6 +228,15 @@
     if (count) count.textContent = String(comments.length);
   }
 
+  function loadServerComments(post) {
+    if (!API) return;
+    API.get('comments?post=' + encodeURIComponent(post.id)).then(function (res) {
+      if (res.ok && res.data && res.data.comments) {
+        renderComments(post, res.data.comments);
+      }
+    });
+  }
+
   function initCommentForm(post) {
     var form = document.querySelector('[data-comment-form]');
     if (!form) return;
@@ -222,38 +248,58 @@
       e.preventDefault();
 
       if (comment.value.trim().length < 10) {
-        U.setFieldError(comment, 'Please write at least a sentence.');
+        U.setFieldError(comment, I ? I.t('blog.errComment') : 'Please write at least a sentence.');
         comment.focus();
         return;
       }
       U.setFieldError(comment, '');
 
       if (!name.value.trim()) {
-        U.setFieldError(name, 'Please add your name.');
+        U.setFieldError(name, I ? I.t('blog.errName') : 'Please add your name.');
         name.focus();
         return;
       }
       U.setFieldError(name, '');
 
       if (!U.validateEmail(email.value)) {
-        U.setFieldError(email, 'A valid email is required (it is never published).');
+        U.setFieldError(email, I ? I.t('blog.errEmail') : 'A valid email is required (it is never published).');
         email.focus();
         return;
       }
       U.setFieldError(email, '');
 
-      var stored = loadComments(post.id);
-      stored.push({
-        name: name.value.trim(),
-        date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
-        text: comment.value.trim(),
-        isNew: true
-      });
-      saveComments(post.id, stored);
+      var text = comment.value.trim();
+      var author = name.value.trim();
 
-      form.reset();
-      renderComments(post);
-      U.toast('Comment posted. Thanks for joining in!');
+      if (API) {
+        // Server first; on static hosting the local fallback below still
+        // stores the comment in this browser.
+        API.post('comments', { post: post.id, name: author, text: text }).then(function (res) {
+          if (res.ok) {
+            form.reset();
+            loadServerComments(post);
+            U.toast(I ? I.t('blog.serverMode') : 'Comment posted — saved on the server. Thanks for joining in!');
+          } else {
+            saveLocal();
+          }
+        });
+      } else {
+        saveLocal();
+      }
+
+      function saveLocal() {
+        var stored = loadComments(post.id);
+        stored.push({
+          name: author,
+          date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+          text: text,
+          isNew: true
+        });
+        saveComments(post.id, stored);
+        form.reset();
+        renderComments(post);
+        U.toast('Comment posted — ' + (I ? I.t('blog.localMode') : 'stored in this browser (no server).'));
+      }
     });
   }
 
@@ -261,5 +307,12 @@
   renderArticle(post);
   renderRecent(post);
   renderComments(post);
+  loadServerComments(post);
   initCommentForm(post);
+
+  // Re-render translated article bits when the language changes.
+  document.addEventListener('travosca:langchange', function () {
+    renderArticle(post);
+    renderRecent(post);
+  });
 })();

@@ -4,7 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About us — Travosca</title>
-<meta name="description" content="Meet the small team behind Travosca: how we plan trips, who we work with and where we have been.">
+<!-- BEGIN SEO -->
+<link rel="canonical" href="https://joy-code1.github.io/TravelWebsite/about_us-page/">
+<meta property="og:title" content="About us — Travosca">
+<meta property="og:description" content="A small team of planners, guides and fixers who would rather travel slowly. Ten years of small groups, handpicked stays and honest prices.">
+<meta property="og:image" content="https://joy-code1.github.io/TravelWebsite/assets/img/hero-about.jpg">
+<meta property="og:url" content="https://joy-code1.github.io/TravelWebsite/about_us-page/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Travosca">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About us — Travosca">
+<meta name="twitter:description" content="A small team of planners, guides and fixers who would rather travel slowly. Ten years of small groups, handpicked stays and honest prices.">
+<meta name="twitter:image" content="https://joy-code1.github.io/TravelWebsite/assets/img/hero-about.jpg">
+<meta name="description" content="A small team of planners, guides and fixers who would rather travel slowly. Ten years of small groups, handpicked stays and honest prices.">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Travosca","url":"https://joy-code1.github.io/TravelWebsite/","logo":"https://joy-code1.github.io/TravelWebsite/assets/img/logo-dark.png","email":"info@traveller.com","telephone":"+97 888 8888","address":{"@type":"PostalAddress","streetAddress":"732 Despard St, Atlanta, GA","addressCountry":"US"},"sameAs":[]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://joy-code1.github.io/TravelWebsite/home-page/"},{"@type":"ListItem","position":2,"name":"About us","item":"https://joy-code1.github.io/TravelWebsite/about_us-page/"}]}</script>
+<!-- END SEO -->
 <meta name="theme-color" content="#111114">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +31,7 @@
 </head>
 <body data-page="about">
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main" data-i18n="nav.skip">Skip to content</a>
 
 <header class="site-header" data-header>
   <div class="container header__inner">
@@ -27,31 +42,36 @@
 
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav__list">
-        <li class="nav__item"><a class="nav__link" data-nav="home" href="../home-page/index.html">Home</a></li>
-        <li class="nav__item"><a class="nav__link" data-nav="about" href="../about_us-page/index.html">About us</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="home" href="../home-page/index.html" data-i18n="nav.home">Home</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="about" href="../about_us-page/index.html" data-i18n="nav.about">About us</a></li>
         <li class="nav__item">
           <button class="nav__link" type="button" data-dropdown-toggle aria-expanded="false" aria-controls="nav-packages">
-            Packages
+            <span data-i18n="nav.packages">Packages</span>
             <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
           </button>
           <ul class="nav__submenu" id="nav-packages">
-            <li><a href="../package-page/index.html">All packages <small>7 trips</small></a></li>
-            <li><a href="../package-page/index.html?region=Asia">Asia <small>5 trips</small></a></li>
-            <li><a href="../package-page/index.html?region=Europe">Europe <small>2 trips</small></a></li>
-            <li><a href="../package-page/index.html?sort=price">Cheapest first <small>from $219</small></a></li>
+            <li><a href="../package-page/index.html"><span data-i18n="nav.allPackages">All packages</span> <small>7 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Asia"><span data-i18n="nav.asia">Asia</span> <small>5 trips</small></a></li>
+            <li><a href="../package-page/index.html?region=Europe"><span data-i18n="nav.europe">Europe</span> <small>2 trips</small></a></li>
+            <li><a href="../package-page/index.html?sort=price"><span data-i18n="nav.cheapest">Cheapest first</span> <small>from $219</small></a></li>
           </ul>
         </li>
-        <li class="nav__item"><a class="nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog</a></li>
-        <li class="nav__item"><a class="nav__link" data-nav="contact" href="../contact-page/index.html">Contact</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="blog" href="../single_blog-page/index.html" data-i18n="nav.blog">Blog</a></li>
+        <li class="nav__item"><a class="nav__link" data-nav="contact" href="../contact-page/index.html" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </nav>
 
     <div class="header__actions">
-      <button class="icon-btn" type="button" data-search-open aria-label="Search destinations">
+      <div class="lang-switch" role="group" aria-label="Language" data-i18n-aria="nav.langLabel">
+        <button class="lang-switch__btn" type="button" data-lang-switch data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-switch__btn" type="button" data-lang-switch data-lang="ru" aria-pressed="false">RU</button>
+        <button class="lang-switch__btn" type="button" data-lang-switch data-lang="uz" aria-pressed="false">UZ</button>
+      </div>
+      <button class="icon-btn" type="button" data-search-open aria-label="Search destinations" data-i18n-aria="nav.searchLabel">
         <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
       </button>
-      <a class="btn btn--light btn--sm header__cta" href="../contact-page/index.html">Plan my trip</a>
-      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu">
+      <a class="btn btn--light btn--sm header__cta" href="../contact-page/index.html" data-track="nav-cta"><span data-i18n="nav.planTrip">Plan my trip</span></a>
+      <button class="nav-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-i18n-aria="nav.openMenu">
         <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-menu"></use></svg>
       </button>
     </div>
@@ -63,38 +83,43 @@
     <a class="brand" href="../home-page/index.html" aria-label="Travosca — home">
       <img class="brand__logo" src="../assets/img/logo-dark.png" alt="Travosca" width="560" height="71">
     </a>
-    <button class="mobile-nav__close" type="button" data-menu-close aria-label="Close menu">
+    <button class="mobile-nav__close" type="button" data-menu-close aria-label="Close menu" data-i18n-aria="nav.closeMenu">
       <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-close"></use></svg>
     </button>
   </div>
   <ul class="mobile-nav__list">
-    <li><a class="mobile-nav__link" data-nav="home" href="../home-page/index.html">Home
+    <li><a class="mobile-nav__link" data-nav="home" href="../home-page/index.html"><span data-i18n="nav.home">Home</span>
       <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
-    <li><a class="mobile-nav__link" data-nav="about" href="../about_us-page/index.html">About us
+    <li><a class="mobile-nav__link" data-nav="about" href="../about_us-page/index.html"><span data-i18n="nav.about">About us</span>
       <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
     <li>
-      <button class="mobile-nav__link" type="button" data-submenu-toggle aria-expanded="false" aria-controls="mobile-packages">Packages
+      <button class="mobile-nav__link" type="button" data-submenu-toggle aria-expanded="false" aria-controls="mobile-packages"><span data-i18n="nav.mobilePackages">Packages</span>
         <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-down"></use></svg>
       </button>
       <div class="mobile-nav__sub" id="mobile-packages">
-        <a href="../package-page/index.html">All packages <small>7</small></a>
-        <a href="../package-page/index.html?region=Asia">Asia <small>5</small></a>
-        <a href="../package-page/index.html?region=Europe">Europe <small>2</small></a>
+        <a href="../package-page/index.html"><span data-i18n="nav.allPackages">All packages</span> <small>7</small></a>
+        <a href="../package-page/index.html?region=Asia"><span data-i18n="nav.asia">Asia</span> <small>5</small></a>
+        <a href="../package-page/index.html?region=Europe"><span data-i18n="nav.europe">Europe</span> <small>2</small></a>
       </div>
     </li>
-    <li><a class="mobile-nav__link" data-nav="blog" href="../single_blog-page/index.html">Blog
+    <li><a class="mobile-nav__link" data-nav="blog" href="../single_blog-page/index.html"><span data-i18n="nav.blog">Blog</span>
       <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
-    <li><a class="mobile-nav__link" data-nav="contact" href="../contact-page/index.html">Contact
+    <li><a class="mobile-nav__link" data-nav="contact" href="../contact-page/index.html"><span data-i18n="nav.contact">Contact</span>
       <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-chevron-right"></use></svg></a></li>
   </ul>
   <div class="mobile-nav__footer">
+    <div class="lang-switch lang-switch--mobile" role="group" aria-label="Language" data-i18n-aria="nav.langLabel">
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="ru" aria-pressed="false">RU</button>
+      <button class="lang-switch__btn" type="button" data-lang-switch data-lang="uz" aria-pressed="false">UZ</button>
+    </div>
     <div class="mobile-nav__socials">
       <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
       <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
       <a href="#" aria-label="YouTube"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-youtube"></use></svg></a>
       <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-instagram"></use></svg></a>
     </div>
-    <a class="btn btn--primary btn--block" href="../contact-page/index.html">Plan my trip</a>
+    <a class="btn btn--primary btn--block" href="../contact-page/index.html"><span data-i18n="nav.planTrip">Plan my trip</span></a>
   </div>
 </nav>
 
@@ -104,7 +129,7 @@
   <div class="search-overlay__inner">
     <div class="search-box" data-search-form>
       <svg class="icon icon--lg" aria-hidden="true"><use href="../assets/img/icons.svg#i-search"></use></svg>
-      <input class="search-box__input" type="search" placeholder="Try “Bali”, “Paris” or “Alps”" aria-label="Search destinations" autocomplete="off">
+      <input class="search-box__input" type="search" placeholder="Try “Bali”, “Paris” or “Alps”" aria-label="Search destinations" data-i18n-placeholder="common.searchTry" data-i18n-aria="common.searchResults" autocomplete="off">
       <button class="btn btn--primary btn--sm" type="button" data-search-close>Close</button>
     </div>
     <div class="search-results"></div>
@@ -117,11 +142,11 @@
   <section class="page-hero page-hero--about">
     <div class="container page-hero__inner">
       <ul class="breadcrumbs">
-        <li><a href="../home-page/index.html">Home</a></li>
-        <li>About us</li>
+        <li><a href="../home-page/index.html" data-i18n="nav.home">Home</a></li>
+        <li data-i18n="nav.about">About us</li>
       </ul>
-      <h1 class="page-hero__title">About us</h1>
-      <p class="page-hero__sub">A small team of planners, guides and fixers who would rather travel slowly.</p>
+      <h1 class="page-hero__title" data-i18n="about.heroTitle">About us</h1>
+      <p class="page-hero__sub" data-i18n="about.heroSub">A small team of planners, guides and fixers who would rather travel slowly.</p>
     </div>
   </section>
 
@@ -130,18 +155,18 @@
       <div class="values">
         <article class="value-card" data-reveal>
           <span class="value-card__icon"><img src="../assets/img/icon-team.svg" alt="" width="84" height="84" loading="lazy"></span>
-          <h3 class="value-card__title">Great teamwork</h3>
-          <p class="value-card__text">Planners, local guides and drivers who have worked together for years, so a trip runs the way it was designed on the day.</p>
+          <h3 class="value-card__title" data-i18n="about.value1Title">Great teamwork</h3>
+          <p class="value-card__text" data-i18n="about.value1Text">Planners, local guides and drivers who have worked together for years, so a trip runs the way it was designed on the day.</p>
         </article>
         <article class="value-card" data-reveal style="--reveal-delay:110ms">
           <span class="value-card__icon"><img src="../assets/img/icon-vision.svg" alt="" width="84" height="84" loading="lazy"></span>
-          <h3 class="value-card__title">Our vision</h3>
-          <p class="value-card__text">Travel that gives more than it takes: small groups, locally owned stays and itineraries paced for the place, not the checklist.</p>
+          <h3 class="value-card__title" data-i18n="about.value2Title">Our vision</h3>
+          <p class="value-card__text" data-i18n="about.value2Text">Travel that gives more than it takes: small groups, locally owned stays and itineraries paced for the place, not the checklist.</p>
         </article>
         <article class="value-card" data-reveal style="--reveal-delay:220ms">
           <span class="value-card__icon"><img src="../assets/img/icon-mission.svg" alt="" width="84" height="84" loading="lazy"></span>
-          <h3 class="value-card__title">Our mission</h3>
-          <p class="value-card__text">To make a properly planned trip something anyone can book — honest prices, no hidden transfers and a real person on the other end.</p>
+          <h3 class="value-card__title" data-i18n="about.value3Title">Our mission</h3>
+          <p class="value-card__text" data-i18n="about.value3Text">To make a properly planned trip something anyone can book — honest prices, no hidden transfers and a real person on the other end.</p>
         </article>
       </div>
     </div>
@@ -153,15 +178,15 @@
         <img src="../assets/img/about-founder.jpg" alt="The Travosca team on a scouting trip" width="1100" height="733" loading="lazy" decoding="async">
       </div>
       <div class="founder__body" data-reveal style="--reveal-delay:120ms">
-        <p class="eyebrow">Our story</p>
-        <h2 class="founder__title">We started with one badly planned holiday</h2>
+        <p class="eyebrow" data-i18n="about.storyEyebrow">Our story</p>
+        <h2 class="founder__title" data-i18n="about.storyTitle">We started with one badly planned holiday</h2>
         <p>Ten days, four cities and a suitcase that spent more time in a coach boot than in a hotel room. We came home convinced there had to be a better way to see a place — fewer stops, better stays, and guides who live where they lead.</p>
         <p>So we built it. Every itinerary we sell is one we have walked ourselves, at the pace we would choose for a friend. If a transfer is longer than three hours we tell you before you book, not after.</p>
         <blockquote class="founder__quote">
           <svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-quote"></use></svg>
-          A good trip is not a longer checklist. It is one place seen properly.
+          <span data-i18n="about.quote">A good trip is not a longer checklist. It is one place seen properly.</span>
         </blockquote>
-        <p class="founder__sign"><strong>Siti Sarah</strong><span>Founder, Travosca</span></p>
+        <p class="founder__sign"><strong>Siti Sarah</strong><span data-i18n="about.founderRole">Founder, Travosca</span></p>
       </div>
     </div>
   </section>
@@ -169,29 +194,29 @@
   <section class="section stats">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">By the numbers</p>
-        <h2 class="title">Ten years of small groups</h2>
+        <p class="eyebrow" data-i18n="about.statsEyebrow">By the numbers</p>
+        <h2 class="title" data-i18n="about.statsTitle">Ten years of small groups</h2>
       </div>
       <div class="stats__grid">
         <div class="stat" data-reveal>
           <span class="stat__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-users"></use></svg></span>
           <p class="stat__value"><span data-count="126" data-count-suffix="+">0</span></p>
-          <p class="stat__label">Satisfied clients</p>
+          <p class="stat__label" data-i18n="about.stat1">Satisfied clients</p>
         </div>
         <div class="stat" data-reveal style="--reveal-delay:90ms">
           <span class="stat__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-compass"></use></svg></span>
           <p class="stat__value"><span data-count="230" data-count-suffix="+">0</span></p>
-          <p class="stat__label">New travellers</p>
+          <p class="stat__label" data-i18n="about.stat2">New travellers</p>
         </div>
         <div class="stat" data-reveal style="--reveal-delay:180ms">
           <span class="stat__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-globe"></use></svg></span>
           <p class="stat__value"><span data-count="48" data-count-suffix="+">0</span></p>
-          <p class="stat__label">Destinations</p>
+          <p class="stat__label" data-i18n="about.stat3">Destinations</p>
         </div>
         <div class="stat" data-reveal style="--reveal-delay:270ms">
           <span class="stat__icon"><svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-spark"></use></svg></span>
           <p class="stat__value"><span data-count="14">0</span></p>
-          <p class="stat__label">Awards</p>
+          <p class="stat__label" data-i18n="about.stat4">Awards</p>
         </div>
       </div>
     </div>
@@ -200,9 +225,9 @@
   <section class="section">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Gallery</p>
-        <h2 class="title">Unforgettable moments</h2>
-        <p class="lead">Frames from trips we have run — no stock photography, no filters.</p>
+        <p class="eyebrow" data-i18n="about.galleryEyebrow">Gallery</p>
+        <h2 class="title" data-i18n="about.galleryTitle">Unforgettable moments</h2>
+        <p class="lead" data-i18n="about.galleryLead">Frames from trips we have run — no stock photography, no filters.</p>
       </div>
       <div class="gallery" data-gallery>
         <button class="gallery__item" type="button" data-photo="gallery-diving.jpg" data-title="Free diving, open water" data-place="Indian Ocean" aria-label="Open image: free diving in open water">
@@ -227,12 +252,12 @@
 
   <section class="newsletter">
     <div class="container">
-      <h2 class="newsletter__title">Subscribe to get special price</h2>
-      <p class="newsletter__text">Don't want to miss something? Subscribe right now and get special promotion and monthly newsletter.</p>
+      <h2 class="newsletter__title" data-i18n="footer.newsletterTitle">Subscribe to get special price</h2>
+      <p class="newsletter__text" data-i18n="footer.newsletterText">Don't want to miss something? Subscribe right now and get special promotion and monthly newsletter.</p>
       <form class="newsletter__form" data-newsletter>
-        <label class="sr-only" for="newsletter-email">Your email address</label>
-        <input class="input" id="newsletter-email" type="email" name="email" placeholder="Type your email here..." autocomplete="email" required>
-        <button class="btn btn--accent" type="submit">Subscribe</button>
+        <label class="sr-only" for="newsletter-email" data-i18n="footer.emailLabel">Your email address</label>
+        <input class="input" id="newsletter-email" type="email" name="email" placeholder="Type your email here..." data-i18n-placeholder="common.emailPlaceholder" autocomplete="email" required>
+        <button class="btn btn--accent" type="submit" data-i18n="common.subscribe">Subscribe</button>
       </form>
       <p class="newsletter__note" data-newsletter-note role="status" aria-live="polite"></p>
     </div>
@@ -245,7 +270,7 @@
     <div class="footer__grid">
       <div>
         <img class="footer__logo" src="../assets/img/logo-light.png" alt="Travosca" width="560" height="71">
-        <p class="footer__about">Small-group trips, handpicked stays and guides who actually live where they lead. Travosca has been planning journeys since 2016.</p>
+        <p class="footer__about" data-i18n="footer.about">Small-group trips, handpicked stays and guides who actually live where they lead. Travosca has been planning journeys since 2016.</p>
         <div class="footer__socials">
           <a href="#" aria-label="Facebook"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-facebook"></use></svg></a>
           <a href="#" aria-label="Twitter"><svg class="icon icon--solid" aria-hidden="true"><use href="../assets/img/icons.svg#i-twitter"></use></svg></a>
@@ -254,9 +279,9 @@
         </div>
       </div>
       <div>
-        <p class="footer__title">Quick links</p>
+        <p class="footer__title" data-i18n="footer.quickLinks">Quick links</p>
         <ul class="footer__list">
-          <li><a href="../home-page/index.html">Home</a></li>
+          <li><a href="../home-page/index.html" data-i18n="nav.home">Home</a></li>
           <li><a href="../about_us-page/index.html">About us</a></li>
           <li><a href="../package-page/index.html">Packages</a></li>
           <li><a href="../single_blog-page/index.html">Blog</a></li>
@@ -264,7 +289,7 @@
         </ul>
       </div>
       <div>
-        <p class="footer__title">Popular trips</p>
+        <p class="footer__title" data-i18n="footer.popularTrips">Popular trips</p>
         <ul class="footer__list">
           <li><a href="../package-page/index.html?dest=bali">Bali, Indonesia</a></li>
           <li><a href="../package-page/index.html?dest=paris">Paris, France</a></li>
@@ -274,7 +299,7 @@
         </ul>
       </div>
       <div>
-        <p class="footer__title">Contact information</p>
+        <p class="footer__title" data-i18n="footer.contactInfo">Contact information</p>
         <ul class="footer__list footer__contact">
           <li>
             <svg class="icon" aria-hidden="true"><use href="../assets/img/icons.svg#i-map-pin"></use></svg>
@@ -292,11 +317,11 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© <span data-year>2026</span> Travosca. All rights reserved.</p>
+      <p>© <span data-year>2026</span> <span data-i18n="footer.rightsSuffix">Travosca. All rights reserved.</span></p>
       <nav aria-label="Legal">
-        <a href="#">Privacy policy</a>
-        <a href="#">Terms of service</a>
-        <a href="#">Cookie settings</a>
+        <a href="#" data-i18n="footer.privacy">Privacy policy</a>
+        <a href="#" data-i18n="footer.terms">Terms of service</a>
+        <a href="#" data-i18n="footer.cookies">Cookie settings</a>
       </nav>
     </div>
   </div>
@@ -307,6 +332,8 @@
 </button>
 
 <script src="../assets/js/data.js"></script>
+<script src="../assets/js/i18n.js" defer></script>
+<script src="../assets/js/api.js" defer></script>
 <script src="../assets/js/ui.js" defer></script>
 <script src="../assets/js/about.js" defer></script>
 </body>
